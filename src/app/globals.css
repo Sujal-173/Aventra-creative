@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* ============================================================
+   AVENTRA DESIGN TOKENS
+   Purple/indigo used sparingly and deliberately — not a wash.
+   ============================================================ */
+:root {
+  --bg: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-dark: #09090b;
+  --ink: #17112c;
+  --ink-muted: #655f78;
+  --ink-faint: #8c879b;
+  --surface: #faf9ff;
+  --surface-dark: #f3f0ff;
+
+  --primary: #5b21e7;
+  --primary-deep: #4214b8;
+  --primary-soft: rgba(91, 33, 231, 0.08);
+  --primary-glow: #7c3aed;
+  --indigo: #4338ca;
+  --accent-blue: #3b82f6;
+
+  --line: #e8e4f2;
+  --line-dark: #ddd8ec;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  /* Shadow tokens */
+  --shadow-sm: 0 1px 3px rgba(23, 17, 44, 0.06), 0 1px 2px rgba(23, 17, 44, 0.04);
+  --shadow-md: 0 4px 16px rgba(23, 17, 44, 0.08), 0 2px 6px rgba(23, 17, 44, 0.04);
+  --shadow-lg: 0 12px 40px rgba(91, 33, 231, 0.1), 0 4px 12px rgba(23, 17, 44, 0.06);
+
+  /* Radius tokens */
+  --radius-btn: 9999px;
+  --radius-card: 1rem;
+  --radius-input: 0.75rem;
+
+  /* Animation duration tokens */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+
+  --font-space-grotesk: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-dark: var(--bg-dark);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-surface: var(--surface);
+  --color-surface-dark: var(--surface-dark);
+  --color-primary: var(--primary);
+  --color-primary-deep: var(--primary-deep);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-glow: var(--primary-glow);
+  --color-indigo: var(--indigo);
+  --color-accent-blue: var(--accent-blue);
+  --color-line: var(--line);
+  --color-line-dark: var(--line-dark);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* .on-violet, .on-violet * { color: #ffffff !important; }
+.on-violet a { color: var(--primary-soft) !important; } */
+
+::selection {
+  background: var(--primary);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* "Build log" signature system — status-pill / commit-style labels.
+   Used only where sequence or status is real, never as decoration. */
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
