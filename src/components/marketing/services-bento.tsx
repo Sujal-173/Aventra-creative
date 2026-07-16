@@ -2,7 +2,15 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Code2, Palette, Search, ShoppingBag, Megaphone, Wrench } from "lucide-react";
+import {
+  ArrowUpRight,
+  Code2,
+  Palette,
+  Search,
+  ShoppingBag,
+  Megaphone,
+  Wrench,
+} from "lucide-react";
 
 const SERVICES = [
   {
@@ -56,11 +64,17 @@ export function ServicesBento() {
       <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
         <div>
           <span className="label-mono text-[var(--primary)]">What we do</span>
-          <h2 className="mt-3 max-w-xl font-[family-name:var(--font-space-grotesk)] font-semibold tracking-tight text-[var(--ink)]" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+          <h2
+            className="mt-3 max-w-xl font-[family-name:var(--font-space-grotesk)] font-semibold tracking-tight text-[var(--ink)]"
+            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
+          >
             Full-stack digital work, under one roof.
           </h2>
         </div>
-        <Link href="/services" className="group flex shrink-0 items-center gap-1.5 text-sm font-medium text-[var(--ink)]">
+        <Link
+          href="/services"
+          className="group flex shrink-0 items-center gap-1.5 text-sm font-medium text-[var(--ink)]"
+        >
           All services
           <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
@@ -82,12 +96,24 @@ export function ServicesBento() {
                 "group flex h-full flex-col justify-between rounded-2xl border p-7 transition-colors " +
                 (s.dark
                   ? "border-transparent bg-[var(--bg-dark)] text-white hover:bg-[#151517]"
-                  : "border-[var(--line)] bg-white hover:border-[var(--primary)]/40 hover:bg-[var(--surface)]")
+                  : "border-[var(--line)] bg-[var(--bg-elevated)] hover:border-[var(--primary)]/40 hover:bg-[var(--surface)]")
               }
             >
               <div className="flex items-start justify-between">
-                <div className={"flex h-11 w-11 items-center justify-center rounded-xl " + (s.dark ? "bg-white/10" : "bg-[var(--primary-soft)]")}>
-                  <s.icon className={"h-5 w-5 " + (s.dark ? "text-white" : "text-[var(--primary)]")} />
+                <div
+                  className={
+                    "flex h-11 w-11 items-center justify-center rounded-xl " +
+                    (s.dark
+                      ? "bg-[rgba(255,255,255,0.12)]"
+                      : "bg-[var(--primary-soft)]")
+                  }
+                >
+                  <s.icon
+                    className={
+                      "h-5 w-5 " +
+                      (s.dark ? "text-white" : "text-[var(--primary)]")
+                    }
+                  />
                 </div>
                 <ArrowUpRight
                   className={
@@ -97,8 +123,17 @@ export function ServicesBento() {
                 />
               </div>
               <div>
-                <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-medium">{s.name}</h3>
-                <p className={"mt-2 text-sm leading-relaxed " + (s.dark ? "text-zinc-400" : "text-[var(--ink-muted)]")}>
+                <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-medium">
+                  {s.name}
+                </h3>
+                <p
+                  className={
+                    "mt-2 text-sm leading-relaxed " +
+                    (s.dark
+                      ? "text-[var(--ink-muted)]"
+                      : "text-[var(--ink-muted)]")
+                  }
+                >
                   {s.desc}
                 </p>
               </div>

@@ -5,7 +5,7 @@ import { ProcessTimeline } from "@/components/marketing/process-timeline";
 
 export const metadata: Metadata = {
   title: "Our Process",
-  description: "Our proven process ensures quality results — from discovery to launch and ongoing support.",
+  description: "A proven delivery process that keeps projects on track from discovery through launch and beyond.",
   alternates: { canonical: "/process" },
 };
 
@@ -14,12 +14,12 @@ export default function ProcessPage() {
     <>
       <PageHeader
         eyebrow="How we work"
-        title="Our Process"
-        description="Our proven process ensures quality results, from first call to launch and beyond."
+        title="Our process"
+        description="A clear delivery process that keeps every project moving forward and every stakeholder aligned."
         crumbs={[{ name: "Home", href: "/" }, { name: "Process" }]}
       />
       <ProcessTimeline />
-      <PageCta title="Ready to Start Your Project?" description="Let's turn your ideas into reality." />
+      <PageCta title="Ready to move forward with your project?" description="We’ll help you turn your brief into a polished digital experience that delivers results." />
     </>
   );
 }

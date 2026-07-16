@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     template: "%s | Aventra Creative",
   },
   description:
-    "Aventra Creative designs and builds modern websites, SEO strategy, and digital experiences that turn visitors into customers. Founder-led. India-based, working worldwide.",
+    "Aventra Creative builds modern websites, SEO, and growth-driven digital experiences for ambitious businesses in India and worldwide.",
   keywords: [
     "web development agency",
     "SEO agency India",
     "website design agency",
     "Aventra Creative",
-    "digital marketing Indore",
+    "digital growth strategy",
     "Next.js development",
   ],
   authors: [{ name: "Sujal Patidar", url: siteUrl }],
@@ -90,7 +90,7 @@ const organizationJsonLd = [
     name: "Aventra Creative",
     url: siteUrl,
     description:
-      "Founder-led digital agency in Indore, India — building modern websites, SEO, and digital experiences for businesses worldwide.",
+      "Founder-led digital agency in Indore, India — building premium websites, SEO, and growth systems for ambitious brands worldwide.",
     image: `${siteUrl}/images/og-image.png`,
     telephone: process.env.NEXT_PUBLIC_PHONE_NUMBER ?? "",
     address: {

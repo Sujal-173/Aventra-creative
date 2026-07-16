@@ -13,19 +13,24 @@ import { fetchProjects, fetchServices } from "@/lib/sanity/queries";
 export const metadata: Metadata = {
   title: "Aventra Creative — We Build Digital Experiences",
   description:
-    "Aventra Creative designs and builds modern websites, SEO strategy, and digital experiences that turn visitors into customers.",
+    "Aventra Creative builds premium websites, SEO, and growth systems that help businesses attract, engage, and convert customers.",
   alternates: { canonical: "/" },
 };
 
 export default async function Home() {
-  const [services, projects] = await Promise.all([fetchServices(SERVICES), fetchProjects(PROJECTS)]);
+  const [services, projects] = await Promise.all([
+    fetchServices(SERVICES),
+    fetchProjects(PROJECTS),
+  ]);
+  const featured = projects.filter((p) => p.featured).slice(0, 3);
+  const featuredForHome = featured.length ? featured : projects.slice(0, 3);
   return (
     <>
       <Hero />
       {/* StatsStrip: animated counters — social proof above the fold */}
       <StatsStrip />
       <CoreServices services={services} />
-      <FeaturedWork projects={projects} />
+      <FeaturedWork projects={featuredForHome} />
       {/* ProcessTeaser: shows our build-log workflow between work and testimonials */}
       <ProcessTeaser />
       <TestimonialStrip />

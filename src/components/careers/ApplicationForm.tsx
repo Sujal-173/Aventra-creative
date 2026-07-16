@@ -4,11 +4,22 @@ import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { 
-  Loader2, CheckCircle2, FileText, UploadCloud, X, 
-  User, Briefcase, Link2, HelpCircle, FileCheck 
+import {
+  Loader2,
+  CheckCircle2,
+  FileText,
+  UploadCloud,
+  X,
+  User,
+  Briefcase,
+  Link2,
+  HelpCircle,
+  FileCheck,
 } from "lucide-react";
-import { clientCareerSchema, type CareerFormValues } from "@/lib/validations/career";
+import {
+  clientCareerSchema,
+  type CareerFormValues,
+} from "@/lib/validations/career";
 import Link from "next/link";
 
 const POSITIONS = [
@@ -19,7 +30,7 @@ const POSITIONS = [
   "SEO & Content Strategist",
   "Digital Marketing Executive",
   "Project Manager",
-  "Other"
+  "Other",
 ];
 
 const EXPERIENCE_LEVELS = [
@@ -27,11 +38,13 @@ const EXPERIENCE_LEVELS = [
   "Junior (1-2 years)",
   "Mid-level (3-5 years)",
   "Senior (5+ years)",
-  "Lead / Director"
+  "Lead / Director",
 ];
 
 export function ApplicationForm() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   const {
@@ -45,7 +58,7 @@ export function ApplicationForm() {
     defaultValues: {
       position: "",
       experience: "",
-    }
+    },
   });
 
   // useWatch subscribes only to these inputs and is compatible with the
@@ -55,11 +68,17 @@ export function ApplicationForm() {
     name: ["resume", "portfolioFile"],
   });
 
-  const isBrowserFileList = (val: unknown): val is FileList => 
-    typeof window !== "undefined" && typeof FileList !== "undefined" && val instanceof FileList;
+  const isBrowserFileList = (val: unknown): val is FileList =>
+    typeof window !== "undefined" &&
+    typeof FileList !== "undefined" &&
+    val instanceof FileList;
 
-  const resumeFile = isBrowserFileList(watchResume) ? watchResume.item(0) : watchResume;
-  const portfolioFile = isBrowserFileList(watchPortfolioFile) ? watchPortfolioFile.item(0) : watchPortfolioFile;
+  const resumeFile = isBrowserFileList(watchResume)
+    ? watchResume.item(0)
+    : watchResume;
+  const portfolioFile = isBrowserFileList(watchPortfolioFile)
+    ? watchPortfolioFile.item(0)
+    : watchPortfolioFile;
 
   async function onSubmit(data: CareerFormValues) {
     setStatus("submitting");
@@ -67,7 +86,7 @@ export function ApplicationForm() {
 
     try {
       const formData = new FormData();
-      
+
       // Append text fields
       Object.keys(data).forEach((key) => {
         if (key !== "resume" && key !== "portfolioFile") {
@@ -101,7 +120,10 @@ export function ApplicationForm() {
     } catch (err: unknown) {
       console.error(err);
       setStatus("error");
-      const message = err instanceof Error ? err.message : "An unexpected error occurred. Please try again.";
+      const message =
+        err instanceof Error
+          ? err.message
+          : "An unexpected error occurred. Please try again.";
       setErrorMessage(message);
     }
   }
@@ -121,13 +143,21 @@ export function ApplicationForm() {
           Application Submitted Successfully
         </h2>
         <p className="mt-4 max-w-md text-sm leading-relaxed text-[var(--ink-muted)]">
-          Thank you for applying to join the Aventra Creative team! Our talent acquisition team will review your qualifications and get back to you shortly.
+          Thank you for applying to join the Aventra Creative team! Our talent
+          acquisition team will review your qualifications and get back to you
+          shortly.
         </p>
-        
-        <div className="mt-8 rounded-2xl border border-[var(--line)] bg-white p-4 max-w-sm w-full shadow-sm text-left">
-          <div className="text-xs font-semibold uppercase tracking-wider text-[var(--primary)] label-mono">What&apos;s Next?</div>
-          <div className="mt-2 text-sm text-[var(--ink)] font-medium">Review Timeline</div>
-          <div className="text-xs text-[var(--ink-muted)] mt-1">Expected response: 5–7 business days</div>
+
+        <div className="mt-8 rounded-2xl border border-[var(--line)] bg-[var(--bg-elevated)] p-4 max-w-sm w-full shadow-sm text-left">
+          <div className="text-xs font-semibold uppercase tracking-wider text-[var(--primary)] label-mono">
+            What&apos;s Next?
+          </div>
+          <div className="mt-2 text-sm text-[var(--ink)] font-medium">
+            Review Timeline
+          </div>
+          <div className="text-xs text-[var(--ink-muted)] mt-1">
+            Expected response: 5–7 business days
+          </div>
         </div>
 
         <Link
@@ -149,68 +179,109 @@ export function ApplicationForm() {
             <User className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">Personal Information</h2>
-            <p className="text-xs text-[var(--ink-muted)] mt-0.5">Let&apos;s start with your basics.</p>
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">
+              Personal Information
+            </h2>
+            <p className="text-xs text-[var(--ink-muted)] mt-0.5">
+              Let&apos;s start with your basics.
+            </p>
           </div>
         </div>
 
         <div className="space-y-5">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <div>
-              <label htmlFor="name" className="label-mono text-zinc-500 text-xs">Full Name *</label>
+              <label
+                htmlFor="name"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                Full Name *
+              </label>
               <input
                 id="name"
                 {...register("name")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
                 placeholder="Jane Doe"
                 aria-invalid={!!errors.name}
               />
-              {errors.name && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.name.message}</p>}
+              {errors.name && (
+                <p className="mt-1.5 text-xs text-red-400 font-medium">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
 
             <div>
-              <label htmlFor="email" className="label-mono text-zinc-500 text-xs">Email *</label>
+              <label
+                htmlFor="email"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                Email *
+              </label>
               <input
                 id="email"
                 type="email"
                 {...register("email")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
                 placeholder="jane@company.com"
                 aria-invalid={!!errors.email}
               />
-              {errors.email && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.email.message}</p>}
+              {errors.email && (
+                <p className="mt-1.5 text-xs text-red-400 font-medium">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
           </div>
 
           <div>
-            <label htmlFor="phone" className="label-mono text-zinc-500 text-xs">Phone Number *</label>
+            <label
+              htmlFor="phone"
+              className="label-mono text-[var(--ink-faint)] text-xs"
+            >
+              Phone Number *
+            </label>
             <input
               id="phone"
               {...register("phone")}
-              className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+              className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
               placeholder="+91 98765 43210"
               aria-invalid={!!errors.phone}
             />
-            {errors.phone && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.phone.message}</p>}
+            {errors.phone && (
+              <p className="mt-1.5 text-xs text-red-400 font-medium">
+                {errors.phone.message}
+              </p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <div>
-              <label htmlFor="city" className="label-mono text-zinc-500 text-xs">City</label>
+              <label
+                htmlFor="city"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                City
+              </label>
               <input
                 id="city"
                 {...register("city")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
                 placeholder="Indore"
               />
             </div>
 
             <div>
-              <label htmlFor="country" className="label-mono text-zinc-500 text-xs">Country</label>
+              <label
+                htmlFor="country"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                Country
+              </label>
               <input
                 id="country"
                 {...register("country")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
                 placeholder="India"
               />
             </div>
@@ -225,73 +296,118 @@ export function ApplicationForm() {
             <Briefcase className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">Professional Details</h2>
-            <p className="text-xs text-[var(--ink-muted)] mt-0.5">Tell us about your career and education.</p>
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">
+              Professional Details
+            </h2>
+            <p className="text-xs text-[var(--ink-muted)] mt-0.5">
+              Tell us about your career and education.
+            </p>
           </div>
         </div>
 
         <div className="space-y-5">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <div>
-              <label htmlFor="position" className="label-mono text-zinc-500 text-xs">Position Applying For *</label>
+              <label
+                htmlFor="position"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                Position Applying For *
+              </label>
               <select
                 id="position"
                 {...register("position")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] focus:border-[var(--primary-glow)] focus:outline-none cursor-pointer"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] focus:border-[var(--primary-glow)] focus:outline-none cursor-pointer"
                 aria-invalid={!!errors.position}
               >
-                <option value="" disabled>Select a position</option>
+                <option value="" disabled>
+                  Select a position
+                </option>
                 {POSITIONS.map((pos) => (
-                  <option key={pos} value={pos}>{pos}</option>
+                  <option key={pos} value={pos}>
+                    {pos}
+                  </option>
                 ))}
               </select>
-              {errors.position && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.position.message}</p>}
+              {errors.position && (
+                <p className="mt-1.5 text-xs text-red-400 font-medium">
+                  {errors.position.message}
+                </p>
+              )}
             </div>
 
             <div>
-              <label htmlFor="experience" className="label-mono text-zinc-500 text-xs">Experience Level *</label>
+              <label
+                htmlFor="experience"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                Experience Level *
+              </label>
               <select
                 id="experience"
                 {...register("experience")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] focus:border-[var(--primary-glow)] focus:outline-none cursor-pointer"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] focus:border-[var(--primary-glow)] focus:outline-none cursor-pointer"
                 aria-invalid={!!errors.experience}
               >
-                <option value="" disabled>Select your experience</option>
+                <option value="" disabled>
+                  Select your experience
+                </option>
                 {EXPERIENCE_LEVELS.map((exp) => (
-                  <option key={exp} value={exp}>{exp}</option>
+                  <option key={exp} value={exp}>
+                    {exp}
+                  </option>
                 ))}
               </select>
-              {errors.experience && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.experience.message}</p>}
+              {errors.experience && (
+                <p className="mt-1.5 text-xs text-red-400 font-medium">
+                  {errors.experience.message}
+                </p>
+              )}
             </div>
           </div>
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
             <div className="sm:col-span-1">
-              <label htmlFor="college" className="label-mono text-zinc-500 text-xs">College / University</label>
+              <label
+                htmlFor="college"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                College / University
+              </label>
               <input
                 id="college"
                 {...register("college")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
                 placeholder="IIT Bombay"
               />
             </div>
 
             <div className="sm:col-span-1">
-              <label htmlFor="degree" className="label-mono text-zinc-500 text-xs">Degree</label>
+              <label
+                htmlFor="degree"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                Degree
+              </label>
               <input
                 id="degree"
                 {...register("degree")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
                 placeholder="B.Tech Computer Science"
               />
             </div>
 
             <div className="sm:col-span-1">
-              <label htmlFor="gradYear" className="label-mono text-zinc-500 text-xs">Graduation Year</label>
+              <label
+                htmlFor="gradYear"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                Graduation Year
+              </label>
               <input
                 id="gradYear"
                 {...register("gradYear")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
                 placeholder="2025"
               />
             </div>
@@ -306,47 +422,78 @@ export function ApplicationForm() {
             <Link2 className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">Professional Links</h2>
-            <p className="text-xs text-[var(--ink-muted)] mt-0.5">Where can we find your work?</p>
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">
+              Professional Links
+            </h2>
+            <p className="text-xs text-[var(--ink-muted)] mt-0.5">
+              Where can we find your work?
+            </p>
           </div>
         </div>
 
         <div className="space-y-5">
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
             <div>
-              <label htmlFor="portfolioWebsite" className="label-mono text-zinc-500 text-xs">Portfolio Website</label>
+              <label
+                htmlFor="portfolioWebsite"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                Portfolio Website
+              </label>
               <input
                 id="portfolioWebsite"
                 {...register("portfolioWebsite")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
                 placeholder="https://janedoe.dev"
                 aria-invalid={!!errors.portfolioWebsite}
               />
-              {errors.portfolioWebsite && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.portfolioWebsite.message}</p>}
+              {errors.portfolioWebsite && (
+                <p className="mt-1.5 text-xs text-red-400 font-medium">
+                  {errors.portfolioWebsite.message}
+                </p>
+              )}
             </div>
 
             <div>
-              <label htmlFor="gitHub" className="label-mono text-zinc-500 text-xs">GitHub Profile</label>
+              <label
+                htmlFor="gitHub"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                GitHub Profile
+              </label>
               <input
                 id="gitHub"
                 {...register("gitHub")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
                 placeholder="https://github.com/janedoe"
                 aria-invalid={!!errors.gitHub}
               />
-              {errors.gitHub && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.gitHub.message}</p>}
+              {errors.gitHub && (
+                <p className="mt-1.5 text-xs text-red-400 font-medium">
+                  {errors.gitHub.message}
+                </p>
+              )}
             </div>
 
             <div>
-              <label htmlFor="linkedIn" className="label-mono text-zinc-500 text-xs">LinkedIn Profile</label>
+              <label
+                htmlFor="linkedIn"
+                className="label-mono text-[var(--ink-faint)] text-xs"
+              >
+                LinkedIn Profile
+              </label>
               <input
                 id="linkedIn"
                 {...register("linkedIn")}
-                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+                className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
                 placeholder="https://linkedin.com/in/janedoe"
                 aria-invalid={!!errors.linkedIn}
               />
-              {errors.linkedIn && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.linkedIn.message}</p>}
+              {errors.linkedIn && (
+                <p className="mt-1.5 text-xs text-red-400 font-medium">
+                  {errors.linkedIn.message}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -359,36 +506,58 @@ export function ApplicationForm() {
             <HelpCircle className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">Application Questions</h2>
-            <p className="text-xs text-[var(--ink-muted)] mt-0.5">Tell us a bit about your motivations.</p>
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">
+              Application Questions
+            </h2>
+            <p className="text-xs text-[var(--ink-muted)] mt-0.5">
+              Tell us a bit about your motivations.
+            </p>
           </div>
         </div>
 
         <div className="space-y-5">
           <div>
-            <label htmlFor="whyJoin" className="label-mono text-zinc-500 text-xs">Why do you want to join Aventra Creative? *</label>
+            <label
+              htmlFor="whyJoin"
+              className="label-mono text-[var(--ink-faint)] text-xs"
+            >
+              Why do you want to join Aventra Creative? *
+            </label>
             <textarea
               id="whyJoin"
               rows={4}
               {...register("whyJoin")}
-              className="mt-2 w-full resize-none rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+              className="mt-2 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
               placeholder="What attracts you to our work, culture, and projects?"
               aria-invalid={!!errors.whyJoin}
             />
-            {errors.whyJoin && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.whyJoin.message}</p>}
+            {errors.whyJoin && (
+              <p className="mt-1.5 text-xs text-red-400 font-medium">
+                {errors.whyJoin.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="bestProject" className="label-mono text-zinc-500 text-xs">Tell us about your best project. *</label>
+            <label
+              htmlFor="bestProject"
+              className="label-mono text-[var(--ink-faint)] text-xs"
+            >
+              Tell us about your best project. *
+            </label>
             <textarea
               id="bestProject"
               rows={4}
               {...register("bestProject")}
-              className="mt-2 w-full resize-none rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+              className="mt-2 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--bg-elevated)] px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
               placeholder="What was the challenge, the tech stack, your role, and the final impact?"
               aria-invalid={!!errors.bestProject}
             />
-            {errors.bestProject && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.bestProject.message}</p>}
+            {errors.bestProject && (
+              <p className="mt-1.5 text-xs text-red-400 font-medium">
+                {errors.bestProject.message}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -400,21 +569,31 @@ export function ApplicationForm() {
             <UploadCloud className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">Documents Upload</h2>
-            <p className="text-xs text-[var(--ink-muted)] mt-0.5">Please upload PDF documents under 5MB.</p>
+            <h2 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">
+              Documents Upload
+            </h2>
+            <p className="text-xs text-[var(--ink-muted)] mt-0.5">
+              Please upload PDF documents under 5MB.
+            </p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {/* Resume PDF Field */}
           <div>
-            <span className="label-mono text-zinc-500 text-xs font-semibold block mb-2">Resume (PDF only) *</span>
+            <span className="label-mono text-[var(--ink-faint)] text-xs font-semibold block mb-2">
+              Resume (PDF only) *
+            </span>
             <div className="relative">
               {!resumeFile ? (
-                <label className="flex flex-col items-center justify-center h-40 border-2 border-dashed border-[var(--line)] rounded-2xl cursor-pointer hover:border-[var(--primary-glow)] bg-white transition-colors duration-200">
-                  <UploadCloud className="h-8 w-8 text-zinc-400 mb-2" />
-                  <span className="text-xs font-medium text-[var(--ink)]">Click to upload Resume</span>
-                  <span className="text-[10px] text-zinc-400 mt-1">PDF max 5MB</span>
+                <label className="flex flex-col items-center justify-center h-40 border-2 border-dashed border-[var(--line)] rounded-2xl cursor-pointer hover:border-[var(--primary-glow)] bg-[var(--bg-elevated)] transition-colors duration-200">
+                  <UploadCloud className="h-8 w-8 text-[var(--ink-faint)] mb-2" />
+                  <span className="text-xs font-medium text-[var(--ink)]">
+                    Click to upload Resume
+                  </span>
+                  <span className="text-[10px] text-[var(--ink-faint)] mt-1">
+                    PDF max 5MB
+                  </span>
                   <input
                     type="file"
                     className="hidden"
@@ -423,38 +602,52 @@ export function ApplicationForm() {
                   />
                 </label>
               ) : (
-                <div className="flex items-center justify-between p-4 border border-[var(--line)] bg-white rounded-2xl shadow-sm">
+                <div className="flex items-center justify-between p-4 border border-[var(--line)] bg-[var(--bg-elevated)] rounded-2xl shadow-sm">
                   <div className="flex items-center gap-3 overflow-hidden">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-[var(--primary)]">
                       <FileCheck className="h-5 w-5" />
                     </div>
                     <div className="overflow-hidden">
-                      <p className="text-xs font-medium text-[var(--ink)] truncate">{resumeFile.name}</p>
-                      <p className="text-[10px] text-zinc-400 mt-0.5">{(resumeFile.size / (1024 * 1024)).toFixed(2)} MB · PDF</p>
+                      <p className="text-xs font-medium text-[var(--ink)] truncate">
+                        {resumeFile.name}
+                      </p>
+                      <p className="text-[10px] text-[var(--ink-faint)] mt-0.5">
+                        {(resumeFile.size / (1024 * 1024)).toFixed(2)} MB · PDF
+                      </p>
                     </div>
                   </div>
                   <button
                     type="button"
                     onClick={() => setValue("resume", undefined as never)}
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 transition-colors"
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-[var(--ink-faint)] hover:bg-[var(--surface)] hover:text-[var(--ink)] transition-colors"
                   >
                     <X className="h-4 w-4" />
                   </button>
                 </div>
               )}
             </div>
-            {errors.resume && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.resume.message as string}</p>}
+            {errors.resume && (
+              <p className="mt-1.5 text-xs text-red-400 font-medium">
+                {errors.resume.message as string}
+              </p>
+            )}
           </div>
 
           {/* Portfolio PDF Field (Optional) */}
           <div>
-            <span className="label-mono text-zinc-500 text-xs font-semibold block mb-2">Portfolio PDF (Optional)</span>
+            <span className="label-mono text-[var(--ink-faint)] text-xs font-semibold block mb-2">
+              Portfolio PDF (Optional)
+            </span>
             <div className="relative">
               {!portfolioFile ? (
-                <label className="flex flex-col items-center justify-center h-40 border-2 border-dashed border-[var(--line)] rounded-2xl cursor-pointer hover:border-[var(--primary-glow)] bg-white transition-colors duration-200">
-                  <UploadCloud className="h-8 w-8 text-zinc-400 mb-2" />
-                  <span className="text-xs font-medium text-[var(--ink)]">Click to upload Portfolio</span>
-                  <span className="text-[10px] text-zinc-400 mt-1">PDF max 5MB</span>
+                <label className="flex flex-col items-center justify-center h-40 border-2 border-dashed border-[var(--line)] rounded-2xl cursor-pointer hover:border-[var(--primary-glow)] bg-[var(--bg-elevated)] transition-colors duration-200">
+                  <UploadCloud className="h-8 w-8 text-[var(--ink-faint)] mb-2" />
+                  <span className="text-xs font-medium text-[var(--ink)]">
+                    Click to upload Portfolio
+                  </span>
+                  <span className="text-[10px] text-[var(--ink-faint)] mt-1">
+                    PDF max 5MB
+                  </span>
                   <input
                     type="file"
                     className="hidden"
@@ -463,27 +656,38 @@ export function ApplicationForm() {
                   />
                 </label>
               ) : (
-                <div className="flex items-center justify-between p-4 border border-[var(--line)] bg-white rounded-2xl shadow-sm">
+                <div className="flex items-center justify-between p-4 border border-[var(--line)] bg-[var(--bg-elevated)] rounded-2xl shadow-sm">
                   <div className="flex items-center gap-3 overflow-hidden">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-[var(--primary)]">
                       <FileText className="h-5 w-5" />
                     </div>
                     <div className="overflow-hidden">
-                      <p className="text-xs font-medium text-[var(--ink)] truncate">{portfolioFile.name}</p>
-                      <p className="text-[10px] text-zinc-400 mt-0.5">{(portfolioFile.size / (1024 * 1024)).toFixed(2)} MB · PDF</p>
+                      <p className="text-xs font-medium text-[var(--ink)] truncate">
+                        {portfolioFile.name}
+                      </p>
+                      <p className="text-[10px] text-[var(--ink-faint)] mt-0.5">
+                        {(portfolioFile.size / (1024 * 1024)).toFixed(2)} MB ·
+                        PDF
+                      </p>
                     </div>
                   </div>
                   <button
                     type="button"
-                    onClick={() => setValue("portfolioFile", undefined as never)}
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 transition-colors"
+                    onClick={() =>
+                      setValue("portfolioFile", undefined as never)
+                    }
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-[var(--ink-faint)] hover:bg-[var(--surface)] hover:text-[var(--ink)] transition-colors"
                   >
                     <X className="h-4 w-4" />
                   </button>
                 </div>
               )}
             </div>
-            {errors.portfolioFile && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.portfolioFile.message as string}</p>}
+            {errors.portfolioFile && (
+              <p className="mt-1.5 text-xs text-red-400 font-medium">
+                {errors.portfolioFile.message as string}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -500,11 +704,15 @@ export function ApplicationForm() {
         type="submit"
         disabled={status === "submitting"}
         className="w-full flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-sm font-semibold text-white shadow-md transition-all hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer duration-150"
-        style={{ background: "linear-gradient(135deg, var(--primary-glow), var(--primary))" }}
+        style={{
+          background:
+            "linear-gradient(135deg, var(--primary-glow), var(--primary))",
+        }}
       >
         {status === "submitting" ? (
           <>
-            <Loader2 className="h-4 w-4 animate-spin" /> Submitting Application...
+            <Loader2 className="h-4 w-4 animate-spin" /> Submitting
+            Application...
           </>
         ) : (
           "Submit Career Application"

@@ -4,7 +4,7 @@ import type { Project } from "@/lib/data/projects";
 import type { Post } from "@/lib/data/posts";
 
 const servicesQuery = '*[_type == "service" && defined(slug.current)] | order(name asc) { "slug": slug.current, name, shortDesc, color, icon, problem, solution, benefits, features, technology, timeline, deliverables, faq }';
-const projectsQuery = '*[_type == "project" && defined(slug.current)] | order(coalesce(orderRank, 999) asc, year desc) { "slug": slug.current, name, client, industry, category, services, year, result, gradient, challenge, solutionText, keyFeatures, technologies, "coverImageUrl": coverImage.asset->url, "coverImageAlt": coverImage.alt, projectUrl, featured, orderRank }';
+const projectsQuery = '*[_type == "project" && defined(slug.current)] | order(coalesce(orderRank, 999) asc, year desc) { "slug": slug.current, name, client, industry, category, services, year, result, overview, gradient, challenge, solutionText, keyFeatures, technologies, "coverImageUrl": coverImage.asset->url, "coverImageAlt": coverImage.alt, projectUrl, featured, orderRank }';
 const postsQuery = '*[_type == "post" && defined(slug.current)] | order(coalesce(publishedAt, date) desc) { "slug": slug.current, title, excerpt, "category": coalesce(category->title, category), "date": coalesce(publishedAt, date), "readTime": coalesce(readTime, "5 min read"), "author": coalesce(author->name, author), gradient, "body": coalesce(body, content), "seoTitle": seo.title, "seoDescription": seo.description }';
 
 export const fetchServices = (fallback: Service[]) => sanityFetch<Service[]>(servicesQuery, fallback);

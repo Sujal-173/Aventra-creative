@@ -149,8 +149,8 @@ export async function POST(req: NextRequest) {
       process.env.CONTACT_TO_EMAIL ??
       process.env.CONTACT_EMAIL ??
       process.env.ADMIN_EMAIL ??
-      "contact.aventracreative@gmail.com";
-    const fromEmail = process.env.RESEND_FROM_EMAIL ?? "Aventra Careers <onboarding@resend.dev>";
+      "hello@aventracreative.com";
+    const fromEmail = process.env.RESEND_FROM_EMAIL ?? "Aventra Careers <hello@aventracreative.com>";
 
     // Build attachments — pass raw Buffer so Resend handles base64 encoding internally.
     // Passing a pre-encoded base64 string causes double-encoding and corrupts the PDF.

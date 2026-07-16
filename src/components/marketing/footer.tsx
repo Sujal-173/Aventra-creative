@@ -38,9 +38,21 @@ const COLUMNS = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: process.env.NEXT_PUBLIC_LINKEDIN_URL, label: "LinkedIn" },
-  { icon: Instagram, href: process.env.NEXT_PUBLIC_INSTAGRAM_URL, label: "Instagram" },
-  { icon: Twitter, href: process.env.NEXT_PUBLIC_TWITTER_URL, label: "Twitter" },
+  {
+    icon: Linkedin,
+    href: process.env.NEXT_PUBLIC_LINKEDIN_URL,
+    label: "LinkedIn",
+  },
+  {
+    icon: Instagram,
+    href: process.env.NEXT_PUBLIC_INSTAGRAM_URL,
+    label: "Instagram",
+  },
+  {
+    icon: Twitter,
+    href: process.env.NEXT_PUBLIC_TWITTER_URL,
+    label: "Twitter",
+  },
   { icon: Github, href: process.env.NEXT_PUBLIC_GITHUB_URL, label: "GitHub" },
 ].filter((link): link is typeof link & { href: string } => Boolean(link.href));
 
@@ -56,21 +68,31 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="relative border-t border-[var(--line)] bg-white text-[var(--ink)]">
+    <footer className="relative border-t border-[var(--line)] bg-[var(--bg)] text-[var(--ink)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20">
         {/* Group C: sm:grid-cols-2 intermediate breakpoint before full 4-col at lg */}
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5">
               <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-[var(--primary-soft)]">
-                <Image src="/images/logo-icon.png" alt="Aventra Creative logo" fill className="object-contain p-1" sizes="36px" />
+                <Image
+                  src="/images/logo-icon.png"
+                  alt="Aventra Creative logo"
+                  fill
+                  className="object-contain p-1"
+                  sizes="36px"
+                />
               </span>
               <span className="flex flex-col leading-none">
-                <span className="font-[family-name:var(--font-space-grotesk)] text-[15px] font-bold tracking-tight">AVENTRA</span>
-                <span className="label-mono text-[9px] text-[var(--primary-glow)]">CREATIVE</span>
+                <span className="font-[family-name:var(--font-space-grotesk)] text-[15px] font-bold tracking-tight">
+                  AVENTRA
+                </span>
+                <span className="label-mono text-[9px] text-[var(--primary-glow)]">
+                  CREATIVE
+                </span>
               </span>
             </div>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-zinc-500">
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-[var(--ink-muted)]">
               We build digital experiences that help businesses grow.
             </p>
             {socialLinks.length > 0 && (
@@ -82,7 +104,7 @@ export function Footer() {
                     aria-label={label}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] text-zinc-500 transition-colors hover:border-[var(--primary-glow)] hover:text-[var(--primary)]"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink-muted)] transition-colors hover:border-[var(--primary-glow)] hover:text-[var(--primary)]"
                   >
                     <Icon className="h-4 w-4" />
                   </Link>
@@ -93,11 +115,16 @@ export function Footer() {
 
           {COLUMNS.map((col) => (
             <div key={col.title}>
-              <h3 className="label-mono text-zinc-600">{col.title}</h3>
+              <h3 className="label-mono text-[var(--ink-faint)]">
+                {col.title}
+              </h3>
               <ul className="mt-5 space-y-3">
                 {col.links.map((l) => (
                   <li key={l.href}>
-                    <Link href={l.href} className="text-sm text-zinc-500 transition-colors hover:text-[var(--primary)]">
+                    <Link
+                      href={l.href}
+                      className="text-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--primary)]"
+                    >
                       {l.name}
                     </Link>
                   </li>
@@ -107,8 +134,10 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-[var(--line)] pt-8 text-xs text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Aventra Creative. All rights reserved.</p>
+        <div className="mt-14 flex flex-col gap-4 border-t border-[var(--line)] pt-8 text-xs text-[var(--ink-muted)] sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} Aventra Creative. All rights reserved.
+          </p>
         </div>
       </div>
 
@@ -117,8 +146,10 @@ export function Footer() {
         aria-label="Back to top"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className={cn(
-          "fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] bg-white text-[var(--ink)] shadow-lg transition-all duration-300 hover:border-[var(--primary-glow)] hover:scale-105 active:scale-95",
-          showScrollTop ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-90 pointer-events-none"
+          "fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--bg-elevated)] text-[var(--ink)] shadow-[var(--shadow-md)] transition-all duration-300 hover:border-[var(--primary-glow)] hover:scale-105 active:scale-95",
+          showScrollTop
+            ? "translate-y-0 opacity-100 scale-100"
+            : "translate-y-8 opacity-0 scale-90 pointer-events-none",
         )}
       >
         <ArrowUp className="h-4 w-4" />

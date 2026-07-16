@@ -18,7 +18,10 @@ export function ProcessTeaser() {
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <span className="label-mono text-[var(--primary)]">How we work</span>
-          <h2 className="mt-3 font-[family-name:var(--font-space-grotesk)] font-semibold tracking-tight text-[var(--ink)]" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+          <h2
+            className="mt-3 font-[family-name:var(--font-space-grotesk)] font-semibold tracking-tight text-[var(--ink)]"
+            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
+          >
             A process that reads like a build log — because it is one.
           </h2>
           <p className="mt-5 max-w-md text-[var(--ink-muted)]">
@@ -34,9 +37,9 @@ export function ProcessTeaser() {
           </Link>
         </div>
 
-        <div className="relative rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-2">
-          <div className="rounded-xl bg-[var(--bg-dark)] p-6">
-            <div className="label-mono flex items-center justify-between text-zinc-500">
+        <div className="relative rounded-[1.6rem] border border-[var(--line)] bg-[var(--bg-elevated)]/90 p-2 shadow-[var(--shadow-md)]">
+          <div className="rounded-[1.25rem] bg-[var(--bg-dark)] p-6">
+            <div className="label-mono flex items-center justify-between text-[var(--ink-faint)]">
               <span>aventra — process.log</span>
               <span className="text-[var(--success)]">● live</span>
             </div>
@@ -54,8 +57,8 @@ export function ProcessTeaser() {
                   <span className="relative z-10 mt-1.5 h-3.5 w-3.5 shrink-0 rounded-full border-2 border-[var(--primary)] bg-[var(--bg-dark)]" />
                   <p className="font-[family-name:var(--font-jetbrains-mono)] text-[13px] leading-relaxed">
                     <span className="text-[var(--primary)]">feat</span>
-                    <span className="text-zinc-500">({s.tag}): </span>
-                    <span className="text-zinc-300">{s.msg}</span>
+                    <span className="text-[var(--ink-faint)]">({s.tag}): </span>
+                    <span className="text-[var(--ink-muted)]">{s.msg}</span>
                   </p>
                 </motion.div>
               ))}

@@ -116,6 +116,7 @@ export const project = defineType({
     requiredList('services', 'Services provided'),
     defineField({name: 'year', title: 'Year', type: 'string', validation: (rule) => rule.required()}),
     defineField({name: 'result', title: 'Result', type: 'string', validation: (rule) => rule.required()}),
+    defineField({name: 'overview', title: 'Overview', type: 'text', rows: 4, validation: (rule) => rule.required()}),
     defineField({
       name: 'coverImage',
       title: 'Cover image',

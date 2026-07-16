@@ -4,7 +4,9 @@ import { useState } from "react";
 
 export function NewsletterForm() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -39,15 +41,22 @@ export function NewsletterForm() {
         placeholder="you@company.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-2.5 text-sm text-[var(--ink)] placeholder:text-zinc-400 focus:border-[var(--primary-glow)] focus:outline-none"
+        className="w-full rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 py-2.5 text-sm text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--primary-glow)] focus:outline-none"
       />
       <button
         type="submit"
         disabled={status === "loading"}
         className="w-full rounded-full px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-        style={{ background: "linear-gradient(135deg, var(--primary-glow), var(--primary))" }}
+        style={{
+          background:
+            "linear-gradient(135deg, var(--primary-glow), var(--primary))",
+        }}
       >
-        {status === "loading" ? "..." : status === "success" ? "Subscribed" : "Subscribe"}
+        {status === "loading"
+          ? "..."
+          : status === "success"
+            ? "Subscribed"
+            : "Subscribe"}
       </button>
       {status === "error" && (
         <span role="alert" className="text-xs text-red-400">

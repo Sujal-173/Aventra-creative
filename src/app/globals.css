@@ -5,14 +5,14 @@
    Purple/indigo used sparingly and deliberately — not a wash.
    ============================================================ */
 :root {
-  --bg: #ffffff;
+  --bg: #f7f4ff;
   --bg-elevated: #ffffff;
   --bg-dark: #09090b;
   --ink: #17112c;
   --ink-muted: #655f78;
   --ink-faint: #8c879b;
-  --surface: #faf9ff;
-  --surface-dark: #f3f0ff;
+  --surface: #f3edff;
+  --surface-dark: #ece4ff;
 
   --primary: #5b21e7;
   --primary-deep: #4214b8;
@@ -27,17 +27,14 @@
   --warning: #f59e0b;
   --danger: #ef4444;
 
-  /* Shadow tokens */
   --shadow-sm: 0 1px 3px rgba(23, 17, 44, 0.06), 0 1px 2px rgba(23, 17, 44, 0.04);
   --shadow-md: 0 4px 16px rgba(23, 17, 44, 0.08), 0 2px 6px rgba(23, 17, 44, 0.04);
-  --shadow-lg: 0 12px 40px rgba(91, 33, 231, 0.1), 0 4px 12px rgba(23, 17, 44, 0.06);
+  --shadow-lg: 0 12px 40px rgba(91, 33, 231, 0.12), 0 4px 12px rgba(23, 17, 44, 0.06);
 
-  /* Radius tokens */
   --radius-btn: 9999px;
   --radius-card: 1rem;
   --radius-input: 0.75rem;
 
-  /* Animation duration tokens */
   --duration-fast: 150ms;
   --duration-base: 250ms;
   --duration-slow: 400ms;
@@ -48,6 +45,24 @@
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+[data-theme="dark"] {
+  --bg: #050816;
+  --bg-elevated: #0f172a;
+  --bg-dark: #020617;
+  --ink: #f8f7ff;
+  --ink-muted: #c8cce2;
+  --ink-faint: #8f96b4;
+  --surface: #0f172a;
+  --surface-dark: #172033;
+  --primary: #8b5cf6;
+  --primary-deep: #7c3aed;
+  --primary-soft: rgba(139, 92, 246, 0.16);
+  --primary-glow: #c084fc;
+  --line: #24324c;
+  --line-dark: #2f3d5c;
+  --shadow-lg: 0 20px 60px rgba(2, 8, 23, 0.45);
 }
 
 @theme inline {
@@ -85,14 +100,15 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1000px circle at top left, rgba(91, 33, 231, 0.08), transparent 50%),
+    radial-gradient(900px circle at 100% 0%, rgba(59, 130, 246, 0.08), transparent 45%);
   color: var(--ink);
   font-feature-settings: "cv11", "ss01";
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* .on-violet, .on-violet * { color: #ffffff !important; }
-.on-violet a { color: var(--primary-soft) !important; } */
 
 ::selection {
   background: var(--primary);
@@ -105,8 +121,6 @@ body {
   border-radius: 2px;
 }
 
-/* "Build log" signature system — status-pill / commit-style labels.
-   Used only where sequence or status is real, never as decoration. */
 .label-mono {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -115,6 +129,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

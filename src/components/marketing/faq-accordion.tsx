@@ -23,8 +23,15 @@ export function FaqAccordion({ items }: { items: { q: string; a: string }[] }) {
               aria-expanded={isOpen}
               aria-controls={panelId}
             >
-              <span className="font-[family-name:var(--font-space-grotesk)] text-[15px] font-medium text-[var(--ink)]">{item.q}</span>
-              <ChevronDown className={"h-4 w-4 shrink-0 text-zinc-500 transition-transform " + (isOpen ? "rotate-180" : "")} />
+              <span className="font-[family-name:var(--font-space-grotesk)] text-[15px] font-medium text-[var(--ink)]">
+                {item.q}
+              </span>
+              <ChevronDown
+                className={
+                  "h-4 w-4 shrink-0 text-[var(--ink-muted)] transition-transform " +
+                  (isOpen ? "rotate-180" : "")
+                }
+              />
             </button>
             <div
               id={panelId}
@@ -34,7 +41,9 @@ export function FaqAccordion({ items }: { items: { q: string; a: string }[] }) {
               style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
             >
               <div className="overflow-hidden">
-                <p className="pb-5 text-sm leading-relaxed text-zinc-600">{item.a}</p>
+                <p className="pb-5 text-sm leading-relaxed text-[var(--ink-muted)]">
+                  {item.a}
+                </p>
               </div>
             </div>
           </div>

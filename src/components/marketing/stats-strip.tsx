@@ -40,9 +40,21 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export function StatsStrip() {
   return (
-    <section className="border-y border-[var(--line)] bg-[var(--surface)]">
-      <div className="mx-auto max-w-7xl px-6 py-14 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+    <section className="border-y border-[var(--line)] bg-[var(--bg)]/70">
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="label-mono text-[var(--primary)]">Proof in motion</p>
+            <h2 className="mt-2 font-[family-name:var(--font-space-grotesk)] text-2xl font-semibold tracking-tight text-[var(--ink)]">
+              Results that feel as good as they perform.
+            </h2>
+          </div>
+          <p className="max-w-xl text-sm leading-relaxed text-[var(--ink-muted)]">
+            We combine sharp strategy, strong visuals, and reliable delivery so
+            every launch feels intentional.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s, i) => (
             <motion.div
               key={s.label}
@@ -50,11 +62,14 @@ export function StatsStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="rounded-[1.25rem] border border-[var(--line)] bg-[var(--bg-elevated)]/80 p-6 shadow-[var(--shadow-sm)]"
             >
               <div className="font-[family-name:var(--font-space-grotesk)] text-4xl font-semibold tracking-tight text-[var(--ink)] lg:text-5xl">
                 <Counter value={s.value} suffix={s.suffix} />
               </div>
-              <div className="mt-2 text-sm text-[var(--ink-muted)]">{s.label}</div>
+              <div className="mt-2 text-sm text-[var(--ink-muted)]">
+                {s.label}
+              </div>
             </motion.div>
           ))}
         </div>

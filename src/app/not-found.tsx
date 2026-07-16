@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0a0a0f] px-6 pt-20">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[var(--bg-dark)] px-6 pt-20">
       <div
         className="pointer-events-none absolute top-1/3 left-1/2 -z-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full opacity-20 blur-[120px]"
         style={{ background: "var(--primary)" }}
@@ -15,7 +15,7 @@ export default function NotFound() {
       {Array.from({ length: 24 }).map((_, i) => (
         <span
           key={i}
-          className="absolute h-1 w-1 rounded-full bg-white/40"
+          className="absolute h-1 w-1 rounded-full bg-[rgba(255,255,255,0.4)]"
           style={{
             top: `${(i * 37) % 100}%`,
             left: `${(i * 53) % 100}%`,
@@ -32,7 +32,15 @@ export default function NotFound() {
           className="font-[family-name:var(--font-space-grotesk)] font-bold tracking-tight text-white"
           style={{ fontSize: "clamp(4rem, 12vw, 8rem)", lineHeight: 1 }}
         >
-          <span style={{ background: "linear-gradient(135deg, var(--primary-glow), var(--primary))", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
+          <span
+            style={{
+              background:
+                "linear-gradient(135deg, var(--primary-glow), var(--primary))",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
             404
           </span>
         </motion.h1>
@@ -48,15 +56,22 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="mx-auto mt-3 max-w-sm text-sm text-zinc-500"
+          className="mx-auto mt-3 max-w-sm text-sm text-[var(--ink-faint)]"
         >
           The page you are looking for doesn&apos;t exist or has been moved.
         </motion.p>
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.35 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+        >
           <Link
             href="/"
             className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
-            style={{ background: "linear-gradient(135deg, var(--primary-glow), var(--primary))" }}
+            style={{
+              background:
+                "linear-gradient(135deg, var(--primary-glow), var(--primary))",
+            }}
           >
             <ArrowLeft className="h-4 w-4" />
             Go Back Home

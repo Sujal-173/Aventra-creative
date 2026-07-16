@@ -37,20 +37,36 @@ export default async function BlogPage() {
         crumbs={[{ name: "Home", href: "/" }, { name: "Blog" }]}
       />
 
-      <section className="bg-white pb-16">
+      <section className="bg-[var(--bg)] pb-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <Link href={`/blog/${featured.slug}`} className="group grid grid-cols-1 gap-6 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] lg:grid-cols-2">
-            <div className="aspect-[16/10] lg:aspect-auto" style={{ background: featured.gradient }} />
+          <Link
+            href={`/blog/${featured.slug}`}
+            className="group grid grid-cols-1 gap-6 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] lg:grid-cols-2"
+          >
+            <div
+              className="aspect-[16/10] lg:aspect-auto"
+              style={{ background: featured.gradient }}
+            />
             <div className="flex flex-col justify-center p-8">
-              <span className="label-mono text-[var(--primary)]">{featured.category} · Featured</span>
+              <span className="label-mono text-[var(--primary)]">
+                {featured.category} · Featured
+              </span>
               <h2 className="mt-3 font-[family-name:var(--font-space-grotesk)] text-2xl font-bold text-[var(--ink)] transition-colors group-hover:text-[var(--primary)]">
                 {featured.title}
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--ink-muted)]">{featured.excerpt}</p>
-              <div className="mt-5 flex items-center gap-3 text-xs text-zinc-500">
+              <p className="mt-3 text-sm leading-relaxed text-[var(--ink-muted)]">
+                {featured.excerpt}
+              </p>
+              <div className="mt-5 flex items-center gap-3 text-xs text-[var(--ink-faint)]">
                 <span>{featured.author}</span>
                 <span>·</span>
-                <span>{new Date(featured.date).toLocaleDateString("en-IN", { month: "short", day: "numeric", year: "numeric" })}</span>
+                <span>
+                  {new Date(featured.date).toLocaleDateString("en-IN", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </span>
                 <span>·</span>
                 <span>{featured.readTime}</span>
               </div>
@@ -59,21 +75,38 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      <section className="bg-white pb-24">
+      <section className="bg-[var(--bg)] pb-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((p) => (
-              <Link key={p.slug} href={`/blog/${p.slug}`} className="group block">
+              <Link
+                key={p.slug}
+                href={`/blog/${p.slug}`}
+                className="group block"
+              >
                 <div className="aspect-[16/10] overflow-hidden rounded-2xl">
-                  <div className="h-full w-full transition-transform duration-500 group-hover:scale-105" style={{ background: p.gradient }} />
+                  <div
+                    className="h-full w-full transition-transform duration-500 group-hover:scale-105"
+                    style={{ background: p.gradient }}
+                  />
                 </div>
-                <span className="label-mono mt-4 block text-[var(--primary)]">{p.category}</span>
+                <span className="label-mono mt-4 block text-[var(--primary)]">
+                  {p.category}
+                </span>
                 <h3 className="mt-1.5 font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)] transition-colors group-hover:text-[var(--primary)]">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-500">{p.excerpt}</p>
-                <div className="mt-4 flex items-center gap-3 text-xs text-zinc-600">
-                  <span>{new Date(p.date).toLocaleDateString("en-IN", { month: "short", day: "numeric", year: "numeric" })}</span>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--ink-muted)]">
+                  {p.excerpt}
+                </p>
+                <div className="mt-4 flex items-center gap-3 text-xs text-[var(--ink-muted)]">
+                  <span>
+                    {new Date(p.date).toLocaleDateString("en-IN", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </span>
                   <span>·</span>
                   <span>{p.readTime}</span>
                 </div>
