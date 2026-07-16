@@ -13,6 +13,7 @@ import "@fontsource/jetbrains-mono/500.css";
 import "./globals.css";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aventracreative.com";
 const twitterHandle = process.env.NEXT_PUBLIC_TWITTER_HANDLE ?? "@aventracreative";
@@ -139,6 +140,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
