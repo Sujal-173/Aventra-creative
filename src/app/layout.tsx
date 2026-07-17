@@ -13,6 +13,8 @@ import "@fontsource/jetbrains-mono/500.css";
 import "./globals.css";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
+import { CookieConsent } from "@/components/marketing/cookie-consent";
+import { StickyContactCta } from "@/components/marketing/sticky-contact-cta";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://aventracreative.com";
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
       "Modern websites, SEO strategy, and digital experiences that turn visitors into customers.",
     images: [
       {
-        url: "/images/og-image.png",
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Aventra Creative — We Build Digital Experiences",
@@ -60,7 +62,7 @@ export const metadata: Metadata = {
     title: "Aventra Creative — We Build Digital Experiences",
     description:
       "Modern websites, SEO strategy, and digital experiences that turn visitors into customers.",
-    images: ["/images/og-image.png"],
+    images: ["/images/og-image.jpg"],
   },
   robots: { index: true, follow: true },
 };
@@ -93,7 +95,7 @@ const organizationJsonLd = [
     url: siteUrl,
     description:
       "Founder-led digital agency in Indore, India — building premium websites, SEO, and growth systems for ambitious brands worldwide.",
-    image: `${siteUrl}/images/og-image.png`,
+    image: `${siteUrl}/images/og-image.jpg`,
     telephone: process.env.NEXT_PUBLIC_PHONE_NUMBER ?? "",
     address: {
       "@type": "PostalAddress",
@@ -162,6 +164,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <StickyContactCta />
+        <CookieConsent />
       </body>
     </html>
   );
