@@ -116,9 +116,6 @@ export default async function CaseStudyPage({
               >
                 {project.name}
               </h1>
-              <p className="mt-4 max-w-lg text-[15px] text-[var(--ink-muted)]">
-                {project.challenge}
-              </p>
               {project.projectUrl && (
                 <a
                   href={project.projectUrl}
@@ -130,23 +127,6 @@ export default async function CaseStudyPage({
                 </a>
               )}
             </div>
-            <dl className="grid grid-cols-2 gap-4 border-t border-[var(--line)] pt-6 lg:border-t-0 lg:pt-0">
-              {[
-                { k: "Client", v: project.client },
-                { k: "Industry", v: project.industry },
-                { k: "Services", v: project.services.join(", ") },
-                { k: "Year", v: project.year },
-              ].map((item) => (
-                <div key={item.k}>
-                  <dt className="label-mono text-[var(--ink-faint)]">
-                    {item.k}
-                  </dt>
-                  <dd className="mt-1 text-sm text-[var(--ink)] font-medium">
-                    {item.v}
-                  </dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </div>
       </section>
@@ -167,7 +147,7 @@ export default async function CaseStudyPage({
               }
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-            <div className="hidden lg:block absolute left-6 bottom-6 max-w-2xl">
+            <div className="hidden absolute left-6 bottom-6 max-w-2xl">
               <div className="rounded-[2rem] bg-black/50 p-8 shadow-[0_40px_120px_rgba(0,0,0,0.35)] backdrop-blur-sm">
                 <span className="label-mono text-[var(--primary)]">
                   {project.industry}
@@ -209,7 +189,7 @@ export default async function CaseStudyPage({
               </div>
             </div>
           </div>
-          <div className="mt-6 rounded-[2rem] bg-[var(--surface)] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.1)] lg:hidden">
+          <div className="mt-6 rounded-[2rem] bg-[var(--surface)] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.1)] ">
             <span className="label-mono text-[var(--primary)]">
               {project.industry}
             </span>
@@ -409,3 +389,4 @@ export default async function CaseStudyPage({
     </>
   );
 }
+
