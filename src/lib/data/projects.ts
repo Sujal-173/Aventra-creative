@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
     industry: "E-commerce",
     category: "E-commerce",
     services: ["Web Development", "SEO"],
-    year: "2025",
+    year: "2024",
     result: "3.1x conversion rate",
     overview:
       "Redesigned the storefront with clearer navigation, shipping transparency, and a checkout experience that keeps buyers moving to purchase.",

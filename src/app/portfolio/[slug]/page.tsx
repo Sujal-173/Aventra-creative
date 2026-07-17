@@ -44,6 +44,30 @@ export default async function CaseStudyPage({
     about: project.industry,
     creator: { "@type": "Organization", name: "Aventra Creative" },
   };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://aventracreative.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Portfolio",
+        item: "https://aventracreative.com/portfolio",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.name,
+        item: `https://aventracreative.com/portfolio/${project.slug}`,
+      },
+    ],
+  };
 
   const related = projects.filter((p) => p.slug !== project.slug).slice(0, 3);
 
@@ -52,6 +76,10 @@ export default async function CaseStudyPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <section className="bg-[var(--bg)] pb-6 pt-36 lg:pt-40">

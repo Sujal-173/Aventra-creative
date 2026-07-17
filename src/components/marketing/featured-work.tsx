@@ -30,19 +30,19 @@ export function FeaturedWork({ projects }: { projects: Project[] }) {
           </Link>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-12">
-          {projects.slice(0, 3).map((project, index) => (
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
+          {projects.slice(0, 4).map((project, index) => (
             <motion.div
               key={project.slug}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.55, delay: index * 0.08 }}
-              className={index === 0 ? "lg:col-span-7" : "lg:col-span-5"}
+              className="lg:col-span-1"
             >
               <Link
                 href={`/portfolio/${project.slug}`}
-                className="group relative block aspect-[4/3] sm:aspect-[16/11] overflow-hidden rounded-[1.6rem] border border-[var(--line)] bg-[var(--bg-elevated)] shadow-[var(--shadow-sm)]"
+                className="group relative block aspect-[4/3] overflow-hidden rounded-[1.6rem] border border-[var(--line)] bg-[var(--bg-elevated)] shadow-[var(--shadow-sm)]"
               >
                 <div
                   className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105"

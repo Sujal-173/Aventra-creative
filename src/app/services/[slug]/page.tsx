@@ -55,6 +55,30 @@ export default async function ServiceDetailPage({
     description: service.shortDesc,
     provider: { "@type": "Organization", name: "Aventra Creative" },
   };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://aventracreative.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: "https://aventracreative.com/services",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: service.name,
+        item: `https://aventracreative.com/services/${service.slug}`,
+      },
+    ],
+  };
 
   return (
     <>
@@ -65,6 +89,10 @@ export default async function ServiceDetailPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <PageHeader

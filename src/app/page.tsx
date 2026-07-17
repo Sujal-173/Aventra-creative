@@ -22,8 +22,8 @@ export default async function Home() {
     fetchServices(SERVICES),
     fetchProjects(PROJECTS),
   ]);
-  const featured = projects.filter((p) => p.featured).slice(0, 3);
-  const featuredForHome = featured.length ? featured : projects.slice(0, 3);
+  const featured = projects.filter((p) => p.featured).slice(0, 4);
+  const featuredForHome = featured.length ? featured : projects.slice(0, 4);
   return (
     <>
       <Hero />

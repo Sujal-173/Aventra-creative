@@ -14,8 +14,10 @@ import "./globals.css";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aventracreative.com";
-const twitterHandle = process.env.NEXT_PUBLIC_TWITTER_HANDLE ?? "@aventracreative";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://aventracreative.com";
+const twitterHandle =
+  process.env.NEXT_PUBLIC_TWITTER_HANDLE ?? "@aventracreative";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -115,6 +117,22 @@ const organizationJsonLd = [
     priceRange: "$$",
     areaServed: "Worldwide",
   },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    url: siteUrl,
+    name: "Aventra Creative",
+    description:
+      "Digital agency building modern websites, SEO strategy, and growth-focused digital experiences for businesses worldwide.",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteUrl}/search?q={search_term}`,
+      },
+      "query-input": "required name=search_term",
+    },
+  },
 ];
 
 export default function RootLayout({
@@ -122,10 +140,15 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="h-full">
-      <body id="top" className="min-h-full flex flex-col font-[family-name:var(--font-inter)] antialiased">
+      <body
+        id="top"
+        className="min-h-full flex flex-col font-[family-name:var(--font-inter)] antialiased"
+      >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
         />
         <a
           href="#main-content"
