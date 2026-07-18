@@ -182,7 +182,7 @@ export default async function BlogPostPage({
               <Link
                 key={p.slug}
                 href={`/blog/${p.slug}`}
-                className="group flex items-center justify-between rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-4 transition-all duration-300 hover:border-[var(--primary)]/30 hover:shadow-[0_4px_15px_rgba(91,33,231,0.02)]"
+                className="group flex items-center justify-between rounded-xl border border-[var(--line)] bg-[var(--surface)] px-5 py-4 transition-all duration-300 hover:border-[var(--primary)]/30 hover:shadow-[0_4px_15px_rgba(67,56,202,0.02)]"
               >
                 <span className="text-sm text-[var(--ink-muted)] group-hover:text-[var(--primary)] transition-colors">
                   {p.title}
