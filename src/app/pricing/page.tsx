@@ -74,7 +74,7 @@ export default function PricingPage() {
                   "relative flex flex-col rounded-2xl p-8 " +
                   (t.featured
                     ? "border-2 lg:-translate-y-3 text-white on-violet"
-                    : "border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] shadow-[0_4px_25px_rgba(64,45,120,0.02)]")
+                    : "border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] shadow-[0_4px_25px_rgba(67,56,202,0.02)]")
                 }
                 style={
                   t.featured
