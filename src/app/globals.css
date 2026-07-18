@@ -5,34 +5,34 @@
    Purple/indigo used sparingly and deliberately — not a wash.
    ============================================================ */
 :root {
-  --bg: #f7f4ff;
+  --bg: #f7f8fb;
   --bg-elevated: #ffffff;
-  --bg-dark: #09090b;
-  --ink: #17112c;
-  --ink-muted: #655f78;
-  --ink-faint: #8c879b;
-  --surface: #f3edff;
-  --surface-dark: #ece4ff;
+  --bg-dark: #0b0e1a;
+  --ink: #10132a;
+  --ink-muted: #5b6178;
+  --ink-faint: #9298ac;
+  --surface: #f0f2f8;
+  --surface-dark: #e7eaf3;
 
-  --primary: #5b21e7;
-  --primary-deep: #4214b8;
-  --primary-soft: rgba(91, 33, 231, 0.08);
-  --primary-glow: #7c3aed;
+  --primary: #4338ca;
+  --primary-deep: #332b9e;
+  --primary-soft: rgba(67, 56, 202, 0.08);
+  --primary-glow: #5b52f0;
   --indigo: #4338ca;
-  --accent-blue: #3b82f6;
+  --accent-blue: #2563eb;
 
-  --line: #e8e4f2;
-  --line-dark: #ddd8ec;
-  --success: #10b981;
+  --line: #e6e8f0;
+  --line-dark: #d8dbe8;
+  --success: #16a34a;
   --warning: #f59e0b;
   --danger: #ef4444;
 
-  --shadow-sm: 0 1px 3px rgba(23, 17, 44, 0.06), 0 1px 2px rgba(23, 17, 44, 0.04);
-  --shadow-md: 0 4px 16px rgba(23, 17, 44, 0.08), 0 2px 6px rgba(23, 17, 44, 0.04);
-  --shadow-lg: 0 12px 40px rgba(91, 33, 231, 0.12), 0 4px 12px rgba(23, 17, 44, 0.06);
+  --shadow-sm: 0 1px 2px rgba(16, 19, 42, 0.04), 0 1px 3px rgba(16, 19, 42, 0.05);
+  --shadow-md: 0 8px 24px rgba(16, 19, 42, 0.07), 0 2px 8px rgba(16, 19, 42, 0.04);
+  --shadow-lg: 0 20px 50px rgba(67, 56, 202, 0.13), 0 6px 16px rgba(16, 19, 42, 0.06);
 
   --radius-btn: 9999px;
-  --radius-card: 1rem;
+  --radius-card: 1.25rem;
   --radius-input: 0.75rem;
 
   --duration-fast: 150ms;
@@ -48,21 +48,21 @@
 }
 
 [data-theme="dark"] {
-  --bg: #050816;
-  --bg-elevated: #0f172a;
-  --bg-dark: #020617;
-  --ink: #f8f7ff;
-  --ink-muted: #c8cce2;
-  --ink-faint: #8f96b4;
-  --surface: #0f172a;
-  --surface-dark: #172033;
-  --primary: #8b5cf6;
-  --primary-deep: #7c3aed;
-  --primary-soft: rgba(139, 92, 246, 0.16);
-  --primary-glow: #c084fc;
-  --line: #24324c;
-  --line-dark: #2f3d5c;
-  --shadow-lg: 0 20px 60px rgba(2, 8, 23, 0.45);
+  --bg: #0a0d18;
+  --bg-elevated: #131627;
+  --bg-dark: #05060d;
+  --ink: #f5f6fb;
+  --ink-muted: #b7bbd4;
+  --ink-faint: #7d82a0;
+  --surface: #161a2e;
+  --surface-dark: #1c2138;
+  --primary: #6c63ff;
+  --primary-deep: #5951e0;
+  --primary-soft: rgba(108, 99, 255, 0.16);
+  --primary-glow: #8b84ff;
+  --line: #232842;
+  --line-dark: #2c3252;
+  --shadow-lg: 0 20px 60px rgba(2, 4, 15, 0.5);
 }
 
 @theme inline {
@@ -102,12 +102,55 @@ html {
 body {
   background-color: var(--bg);
   background-image:
-    radial-gradient(1000px circle at top left, rgba(91, 33, 231, 0.08), transparent 50%),
-    radial-gradient(900px circle at 100% 0%, rgba(59, 130, 246, 0.08), transparent 45%);
+    radial-gradient(900px circle at top left, rgba(67, 56, 202, 0.05), transparent 50%),
+    radial-gradient(800px circle at 100% 0%, rgba(37, 99, 235, 0.045), transparent 45%);
   color: var(--ink);
   font-feature-settings: "cv11", "ss01";
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-btn);
+  background-color: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  transition: background-color var(--duration-base) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+.btn-primary:hover {
+  background-color: var(--primary-deep);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-btn);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 ::selection {
@@ -126,6 +169,26 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation-name: marquee-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
