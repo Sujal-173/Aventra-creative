@@ -1,6 +1,25 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Compass, Sparkles, Target } from "lucide-react";
+import {
+  Compass,
+  Sparkles,
+  Target,
+  Star,
+  Briefcase,
+  Users,
+  Rocket,
+  ShieldCheck,
+  Code2,
+  Layers,
+  Lightbulb,
+  Palette,
+  Brush,
+  ClipboardList,
+  Linkedin,
+  Github,
+  Instagram,
+  Mail,
+} from "lucide-react";
 import { PageHeader } from "@/components/marketing/page-header";
 import { PageCta } from "@/components/marketing/page-cta";
 
@@ -11,27 +30,79 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
+const FOUNDERS = [
+  {
+    name: "Sujal Patidar",
+    role: "Founder & CEO",
+    title: "Full Stack Developer",
+    image: "/images/founder-sujal.png",
+    bio: "I turn ideas into digital products. With a strong background in full stack development, I lead the technical strategy, development, and innovation at Aventra Creative.",
+    skills: [
+      { label: "Full Stack Development", icon: Code2 },
+      { label: "System Architecture", icon: Layers },
+      { label: "Problem Solving", icon: Lightbulb },
+      { label: "Product Strategy", icon: Target },
+    ],
+    socials: [
+      { icon: Linkedin, href: process.env.FOUNDER_LINKEDIN_URL, label: "LinkedIn" },
+      { icon: Github, href: process.env.FOUNDER_GITHUB_URL, label: "GitHub" },
+      { icon: Instagram, href: process.env.FOUNDER_INSTAGRAM_URL, label: "Instagram" },
+      { icon: Mail, href: process.env.FOUNDER_EMAIL_URL, label: "Email" },
+    ],
+  },
+  {
+    name: "Kuldeep Patidar",
+    role: "Co-Founder",
+    title: "Design & Client Management",
+    image: "/images/founder-kuldeep.png",
+    bio: "I focus on creating meaningful designs that connect brands with people and managing client relationships to ensure smooth communication and successful project delivery.",
+    skills: [
+      { label: "UI/UX Design", icon: Palette },
+      { label: "Brand & Visual Design", icon: Brush },
+      { label: "Client Management", icon: Users },
+      { label: "Project Coordination", icon: ClipboardList },
+    ],
+    socials: [
+      { icon: Linkedin, href: process.env.CO_FOUNDER_LINKEDIN_URL, label: "LinkedIn" },
+      { icon: Instagram, href: process.env.CO_FOUNDER_INSTAGRAM_URL, label: "Instagram" },
+      { icon: Mail, href: process.env.CO_FOUNDER_EMAIL_URL, label: "Email" },
+    ],
+  },
+];
+
+const STATS = [
+  { v: "1+", l: "Years Experience", icon: Star },
+  { v: "15+", l: "Projects Completed", icon: Briefcase },
+  { v: "10+", l: "Happy Clients", icon: Users },
+  { v: "10+", l: "Industries Served", icon: Rocket },
+  { v: "100%", l: "Client Satisfaction", icon: ShieldCheck },
+];
+
 const JOURNEY = [
   {
     year: "2026",
     title: "Founded",
-    detail: "Aventra Creative was founded with a vision to empower businesses online.",
+    detail:
+      "Aventra Creative was established to help businesses build high-performance websites, improve their online presence, and generate more leads.",
   },
-  // {
-  //   year: "2022",
-  //   title: "Growth",
-  //   detail: "Expanded team and crafted stunning high-impact projects.",
-  // },
-  // {
-  //   year: "2023",
-  //   title: "Recognition",
-  //   detail: "Trusted by 50+ brands across different industries.",
-  // },
-  // {
-  //   year: "2024",
-  //   title: "Scaling",
-  //   detail: "Building better products and stronger client relationships.",
-  // },
+  {
+    year: "2026",
+    title: "First Client",
+    detail:
+      "Successfully delivered our first client website with a focus on performance, responsive design, and SEO best practices.",
+  },
+  {
+    year: "2026",
+    title: "Service Expansion",
+    detail:
+      "Expanded from web development to include branding, UI/UX design, local SEO, website maintenance, and digital marketing solutions.",
+  },
+  {
+    year: "Today",
+    title: "Growing Every Day",
+    detail:
+      "Partnering with startups and local businesses to create fast, modern, and conversion-focused digital experiences.",
+  },
 ];
 
 export default function AboutPage() {
@@ -46,54 +117,85 @@ export default function AboutPage() {
 
       <section className="bg-[var(--bg)] pb-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-            <div>
-              <span className="label-mono text-[var(--primary)]">My Story</span>
-              <h2 className="mt-3 font-[family-name:var(--font-space-grotesk)] text-2xl font-bold text-[var(--ink)] lg:text-3xl">
-                Sujal Patidar — Founder &amp; Full Stack Developer
-              </h2>
-              <p className="mt-5 text-[15px] leading-relaxed text-[var(--ink-muted)]">
-                Aventra Creative was created to solve a simple but costly problem:
-                businesses were investing in digital products that did not
-                generate leads or sales. We focus on premium execution, clear
-                messaging, and measurable outcomes.
-              </p>
-              <p className="mt-4 text-[15px] leading-relaxed text-[var(--ink-muted)]">
-                Every project combines strategy, polished design, and modern
-                engineering so your website becomes a reliable growth engine,
-                not just another online brochure.
-              </p>
-              <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                {[
-                  { v: "1+", l: "Years Experience" },
-                  { v: "8+", l: "Clients Served" },
-                  { v: "10+", l: "Projects Completed" },
-                  { v: "98%", l: "Client Satisfaction" },
-                ].map((s) => (
-                  <div
-                    key={s.l}
-                    className="card p-4"
-                  >
-                    <div className="font-[family-name:var(--font-space-grotesk)] text-xl font-bold text-[var(--ink)]">
-                      {s.v}
-                    </div>
-                    <div className="mt-1 text-[11px] leading-tight text-[var(--ink-muted)]">
-                      {s.l}
-                    </div>
+          <span className="label-mono text-[var(--primary)]">Our Founders</span>
+
+          <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {FOUNDERS.map((f) => (
+              <div
+                key={f.name}
+                className="card grid grid-cols-1 overflow-hidden sm:grid-cols-[0.85fr_1.15fr]"
+              >
+                <div className="relative aspect-[4/5] sm:aspect-auto">
+                  <Image
+                    src={f.image}
+                    alt={`${f.name}, ${f.role} at Aventra Creative`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 320px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="flex flex-col p-6 sm:p-7">
+                  <span className="label-mono text-[var(--primary)]">
+                    {f.role}
+                  </span>
+                  <h3 className="mt-2 font-[family-name:var(--font-space-grotesk)] text-xl font-bold text-[var(--ink)]">
+                    {f.name}
+                  </h3>
+                  <p className="mt-0.5 text-sm font-semibold text-[var(--primary)]">
+                    {f.title}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-[var(--ink-muted)]">
+                    {f.bio}
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {f.skills.map((skill) => (
+                      <span
+                        key={skill.label}
+                        className="flex items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 py-1 text-[11px] font-medium text-[var(--ink-muted)]"
+                      >
+                        <skill.icon
+                          className="h-3 w-3"
+                          style={{ color: "var(--primary)" }}
+                        />
+                        {skill.label}
+                      </span>
+                    ))}
                   </div>
-                ))}
+                  <div className="mt-5 flex items-center gap-3">
+                    {f.socials.map((s) => (
+                      <a
+                        key={s.label}
+                        href={s.href}
+                        aria-label={`${f.name} on ${s.label}`}
+                        className="flex h-8 w-8 items-center justify-center rounded-full text-[var(--ink)] transition-colors hover:text-[var(--primary)]"
+                        style={{ background: "var(--primary-soft)" }}
+                      >
+                        <s.icon className="h-4 w-4" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-md)]">
-              <Image
-                src="/images/founder-sujal.png"
-                alt="Sujal Patidar, Founder & Full Stack Developer at Aventra Creative"
-                fill
-                sizes="(max-width: 1024px) 384px, 480px"
-                className="object-cover object-center"
-                priority
-              />
-            </div>
+            ))}
+          </div>
+
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-5">
+            {STATS.map((s) => (
+              <div key={s.l} className="card flex flex-col items-center p-5 text-center">
+                <div
+                  className="flex h-11 w-11 items-center justify-center rounded-full"
+                  style={{ background: "var(--primary-soft)" }}
+                >
+                  <s.icon className="h-5 w-5" style={{ color: "var(--primary)" }} />
+                </div>
+                <div className="mt-3 font-[family-name:var(--font-space-grotesk)] text-xl font-bold text-[var(--ink)]">
+                  {s.v}
+                </div>
+                <div className="mt-1 text-[11px] leading-tight text-[var(--ink-muted)]">
+                  {s.l}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -146,8 +248,8 @@ export default function AboutPage() {
 
           <div className="relative mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="pointer-events-none absolute left-0 right-0 top-[9px] hidden h-px bg-[var(--line)] lg:block" />
-            {JOURNEY.map((j) => (
-              <div key={j.year} className="relative pl-6">
+            {JOURNEY.map((j,index) => (
+              <div key={index} className="relative pl-6">
                 <span
                   className="absolute left-0 top-1.5 h-3 w-3 rounded-full ring-4"
                   style={{
