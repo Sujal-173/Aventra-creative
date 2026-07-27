@@ -104,7 +104,7 @@ export default function ContactPage() {
               <iframe
                 title="Aventra Creative location"
                 src="https://maps.google.com/maps?q=Indore,Madhya%20Pradesh,India&t=&z=11&ie=UTF8&iwloc=&output=embed"
-                className="h-56 w-full grayscale contrast-[1.05]"
+                className="h-56 w-full"
                 loading="lazy"
               />
             </div>
