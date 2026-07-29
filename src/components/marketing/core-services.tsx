@@ -52,7 +52,7 @@ export function CoreServices({ services }: { services: Service[] }) {
               >
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group flex h-full flex-col rounded-[1.5rem] border border-[var(--line)] bg-[var(--bg-elevated)] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/40 hover:shadow-[0_20px_60px_rgba(67,56,202,0.08)]"
+                  className="group flex h-full flex-col rounded-2xl border border-[var(--line)] bg-[var(--bg-elevated)] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/40 hover:shadow-[var(--shadow-lg)]"
                 >
                   <div
                     className="flex h-12 w-12 items-center justify-center rounded-2xl"

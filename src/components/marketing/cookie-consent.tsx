@@ -41,7 +41,8 @@ export function CookieConsent() {
     <div
       role="region"
       aria-label="Cookie consent"
-      className="fixed inset-x-0 bottom-0 z-[70] border-t border-[var(--line)] bg-[var(--bg-elevated)]/95 px-6 py-5 backdrop-blur-xl [box-shadow:0_-8px_30px_rgba(23,17,44,0.08)]"
+      className="fixed inset-x-0 bottom-0 z-[70] border-t border-[var(--line)] px-6 py-5 backdrop-blur-xl [box-shadow:0_-8px_30px_rgba(23,17,44,0.08)]"
+      style={{ backgroundColor: "var(--bg-elevated)" }}
     >
       <div className="mx-auto flex max-w-7xl flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm leading-relaxed text-[var(--ink-muted)]">

@@ -73,32 +73,26 @@ export default function PricingPage() {
                 className={
                   "relative flex flex-col rounded-2xl p-8 " +
                   (t.featured
-                    ? "border-2 lg:-translate-y-3 text-white on-violet"
-                    : "border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] shadow-[0_4px_25px_rgba(67,56,202,0.02)]")
+                    ? "border-2 lg:-translate-y-3 text-white"
+                    : "border border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] shadow-[var(--shadow-md)]")
                 }
                 style={
                   t.featured
-                    ? {
-                        borderColor: "var(--primary-glow)",
-                        background: "linear-gradient(160deg, #1a1030, #2b1152)",
-                      }
+                    ? { borderColor: "var(--accent)", background: "var(--bg-dark)" }
                     : undefined
                 }
               >
                 {t.featured && (
                   <span
-                    className="label-mono absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-white"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, var(--primary-glow), var(--primary))",
-                    }}
+                    className="label-mono absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[var(--accent-ink)]"
+                    style={{ background: "var(--accent)" }}
                   >
                     Most Popular
                   </span>
                 )}
                 <h3
                   className={
-                    "font-[family-name:var(--font-space-grotesk)] text-lg font-semibold " +
+                    "font-display text-lg font-semibold " +
                     (t.featured ? "text-white" : "text-[var(--ink)]")
                   }
                 >
@@ -107,7 +101,7 @@ export default function PricingPage() {
                 <p className="mt-1 text-sm text-[var(--ink-muted)]">{t.desc}</p>
                 <div
                   className={
-                    "mt-5 font-[family-name:var(--font-space-grotesk)] text-4xl font-bold " +
+                    "mt-5 font-display text-4xl font-bold " +
                     (t.featured ? "text-white" : "text-[var(--ink)]")
                   }
                 >
@@ -119,16 +113,12 @@ export default function PricingPage() {
                       key={f}
                       className={
                         "flex items-start gap-2.5 text-sm " +
-                        (t.featured
-                          ? "text-purple-100"
-                          : "text-[var(--ink-faint)]")
+                        (t.featured ? "text-white/70" : "text-[var(--ink-faint)]")
                       }
                     >
                       <Check
                         className="mt-0.5 h-4 w-4 shrink-0"
-                        style={{
-                          color: t.featured ? "#a78bfa" : "var(--primary)",
-                        }}
+                        style={{ color: t.featured ? "var(--accent)" : "var(--accent)" }}
                       />
                       {f}
                     </li>
@@ -137,19 +127,12 @@ export default function PricingPage() {
                 <Link
                   href="/contact"
                   className={
-                    "mt-8 rounded-full px-6 py-3 text-center text-sm font-medium transition-all duration-300 " +
+                    "mt-8 rounded-full px-6 py-3 text-center text-sm font-semibold transition-all duration-300 " +
                     (t.featured
-                      ? "text-white hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
-                      : "border border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary-soft)] hover:scale-105")
+                      ? "text-[var(--accent-ink)] hover:scale-105 hover:shadow-[var(--shadow-glow)]"
+                      : "border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent-soft)] hover:scale-105")
                   }
-                  style={
-                    t.featured
-                      ? {
-                          background:
-                            "linear-gradient(135deg, var(--primary-glow), var(--primary))",
-                        }
-                      : undefined
-                  }
+                  style={t.featured ? { background: "var(--accent)" } : undefined}
                 >
                   Get Started
                 </Link>
@@ -159,7 +142,7 @@ export default function PricingPage() {
 
           <div className="mt-12 flex flex-col items-start justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-8 sm:flex-row sm:items-center">
             <div>
-              <h3 className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-[var(--ink)]">
+              <h3 className="font-display text-lg font-semibold text-[var(--ink)]">
                 Need Something Custom?
               </h3>
               <p className="mt-1 text-sm text-[var(--ink-muted)]">
@@ -168,7 +151,7 @@ export default function PricingPage() {
             </div>
             <Link
               href="/contact"
-              className="shrink-0 rounded-full border border-[var(--primary)] px-6 py-3 text-sm font-medium text-[var(--primary)] hover:bg-[var(--primary-soft)] transition-colors"
+              className="shrink-0 rounded-full border border-[var(--accent)] px-6 py-3 text-sm font-medium text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-colors"
             >
               Let&apos;s Discuss
             </Link>

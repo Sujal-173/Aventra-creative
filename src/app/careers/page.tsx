@@ -71,7 +71,7 @@ export default function CareersPage() {
             {TRACKS.map((t) => (
               <div
                 key={t.title}
-                className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-7 shadow-[0_4px_15px_rgba(67,56,202,0.02)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--primary)]/30 hover:shadow-[0_12px_35px_rgba(67,56,202,0.06)]"
+                className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-7 shadow-[var(--shadow-md)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--primary)]/30 hover:shadow-[var(--shadow-md)]"
               >
                 <span
                   className="flex h-11 w-11 items-center justify-center rounded-2xl"

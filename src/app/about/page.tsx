@@ -167,6 +167,7 @@ export default function AboutPage() {
                         key={s.label}
                         href={s.href}
                         aria-label={`${f.name} on ${s.label}`}
+                        target="_blank"
                         className="flex h-8 w-8 items-center justify-center rounded-full text-[var(--ink)] transition-colors hover:text-[var(--primary)]"
                         style={{ background: "var(--primary-soft)" }}
                       >

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@aventracreative.com";
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@aventracreative.in";
 const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER || "+91 98765 43210";
 const WHATSAPP_LINK =
   process.env.NEXT_PUBLIC_WHATSAPP_LINK || "https://wa.me/919876543210";
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 href={c.href}
                 target={c.href.startsWith("http") ? "_blank" : undefined}
                 rel={c.href.startsWith("http") ? "noreferrer" : undefined}
-                className="flex items-start gap-4 rounded-[1.35rem] border border-[var(--line)] bg-[var(--bg-elevated)] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--primary)]/30 hover:shadow-[0_12px_35px_rgba(67,56,202,0.08)]"
+                className="flex items-start gap-4 rounded-[1.35rem] border border-[var(--line)] bg-[var(--bg-elevated)] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--primary)]/30 hover:shadow-[var(--shadow-md)]"
               >
                 <span
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl"
@@ -104,7 +104,7 @@ export default function ContactPage() {
               <iframe
                 title="Aventra Creative location"
                 src="https://maps.google.com/maps?q=Indore,Madhya%20Pradesh,India&t=&z=11&ie=UTF8&iwloc=&output=embed"
-                className="h-56 w-full grayscale contrast-[1.05]"
+                className="h-56 w-full"
                 loading="lazy"
               />
             </div>
@@ -138,7 +138,7 @@ export default function ContactPage() {
           </div>
 
           {/* Right column */}
-          <div className="rounded-[1.6rem] border border-[var(--line)] bg-[var(--bg-elevated)] p-8 shadow-[0_20px_60px_rgba(67,56,202,0.08)]">
+          <div className="rounded-[1.6rem] border border-[var(--line)] bg-[var(--bg-elevated)] p-8 shadow-[var(--shadow-md)]">
             <ContactForm />
           </div>
         </div>

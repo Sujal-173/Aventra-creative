@@ -7,7 +7,7 @@ const STATS = [
   { value: 8, suffix: "+", label: "Happy clients" },
   { value: 10, suffix: "+", label: "Projects completed" },
   { value: 1, suffix: "+", label: "Years in business" },
-  { value: 98, suffix: "%", label: "Client satisfaction" },
+  { value: 99, suffix: "%", label: "Client satisfaction" },
 ];
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
@@ -40,7 +40,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export function StatsStrip() {
   return (
-    <section className="border-y border-[var(--line)] bg-[var(--bg)]/70">
+    <section className="border-y border-[var(--line)]" style={{ backgroundColor: "var(--bg)" }}>
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -62,7 +62,8 @@ export function StatsStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="rounded-[1.25rem] border border-[var(--line)] bg-[var(--bg-elevated)]/80 p-6 shadow-[var(--shadow-sm)]"
+              className="rounded-[1.25rem] border border-[var(--line)] p-6 shadow-[var(--shadow-sm)]"
+              style={{ backgroundColor: "var(--bg-elevated)" }}
             >
               <div className="font-[family-name:var(--font-space-grotesk)] text-4xl font-semibold tracking-tight text-[var(--ink)] lg:text-5xl">
                 <Counter value={s.value} suffix={s.suffix} />

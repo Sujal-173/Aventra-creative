@@ -2,7 +2,7 @@ import React from "react";
 import { NextRequest, NextResponse } from "next/server";
 import { serverCareerSchema } from "@/lib/validations/career";
 import { uploadToCloudinary } from "@/lib/cloudinary";
-import { resend } from "@/lib/resend";
+import { getResend } from "@/lib/resend";
 import { CareerApplicationEmail } from "@/components/emails/CareerApplicationEmail";
 
 const hits = new Map<string, number[]>();
@@ -149,8 +149,8 @@ export async function POST(req: NextRequest) {
       process.env.CONTACT_TO_EMAIL ??
       process.env.CONTACT_EMAIL ??
       process.env.ADMIN_EMAIL ??
-      "hello@aventracreative.com";
-    const fromEmail = process.env.RESEND_FROM_EMAIL ?? "Aventra Careers <hello@aventracreative.com>";
+      "hello@aventracreative.in";
+    const fromEmail = process.env.RESEND_FROM_EMAIL ?? "Aventra Careers <hello@aventracreative.in>";
 
     // Build attachments — pass raw Buffer so Resend handles base64 encoding internally.
     // Passing a pre-encoded base64 string causes double-encoding and corrupts the PDF.
@@ -168,7 +168,7 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const emailResult = await resend.emails.send({
+    const emailResult = await getResend().emails.send({
       from: fromEmail,
       to: [adminEmail],
       subject: `New Career Application - ${name}`,

@@ -67,7 +67,7 @@ export function CareerApplicationEmail({
       day: "numeric",
     });
 
-  const logoUrl = "https://aventracreative.com/images/logo-icon-transparent.png";
+  const logoUrl = "https://aventracreative.in/images/logo-icon-transparent.png";
 
   return (
     <Html lang="en">

@@ -34,7 +34,7 @@ export function PortfolioGrid({ projects }: { projects: Project[] }) {
                 className={
                   "rounded-full border px-4 py-2 text-sm transition-colors cursor-pointer min-h-[44px] " +
                   (active === category
-                    ? "border-transparent bg-[var(--primary)] text-white"
+                    ? "border-transparent bg-[var(--accent)] text-[var(--accent-ink)]"
                     : "border-[var(--line)] text-[var(--ink-muted)] hover:border-[var(--primary)] hover:text-[var(--ink)]")
                 }
                 aria-pressed={active === category}
@@ -53,7 +53,7 @@ export function PortfolioGrid({ projects }: { projects: Project[] }) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: index * 0.05 }}
-              className="group overflow-hidden rounded-[1.75rem] border border-[var(--line)] bg-[var(--bg-elevated)] shadow-[0_20px_60px_rgba(67,56,202,0.1)]"
+              className="group overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--bg-elevated)] shadow-[var(--shadow-lg)]"
             >
               <Link href={`/portfolio/${project.slug}`} className="block">
                 <div className="relative h-64 overflow-hidden">

@@ -136,7 +136,7 @@ export function ApplicationForm() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="flex flex-col items-center justify-center rounded-3xl border border-[var(--line)] bg-[var(--surface)] px-8 py-20 text-center shadow-[var(--shadow-lg)]"
       >
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-violet-100 text-[var(--primary)] mb-6">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)] mb-6">
           <CheckCircle2 className="h-10 w-10 text-[var(--primary)]" />
         </div>
         <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold tracking-tight text-[var(--ink)] sm:text-3xl">
@@ -162,7 +162,7 @@ export function ApplicationForm() {
 
         <Link
           href="/"
-          className="mt-10 inline-flex items-center justify-center rounded-full bg-[var(--primary)] px-8 py-3.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-[var(--primary-deep)] hover:scale-105 active:scale-95 duration-200"
+          className="mt-10 inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-8 py-3.5 text-sm font-semibold text-[var(--accent-ink)] shadow-md transition-all hover:bg-[var(--accent-glow)] hover:scale-105 active:scale-95 duration-200"
         >
           Return Home
         </Link>
@@ -175,7 +175,7 @@ export function ApplicationForm() {
       {/* SECTION 1: PERSONAL INFORMATION */}
       <div className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8 shadow-[var(--shadow-sm)]">
         <div className="flex items-center gap-3 border-b border-[var(--line)] pb-4 mb-6">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-100 text-[var(--primary)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
             <User className="h-5 w-5" />
           </div>
           <div>
@@ -292,7 +292,7 @@ export function ApplicationForm() {
       {/* SECTION 2: PROFESSIONAL INFORMATION */}
       <div className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8 shadow-[var(--shadow-sm)]">
         <div className="flex items-center gap-3 border-b border-[var(--line)] pb-4 mb-6">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-100 text-[var(--primary)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
             <Briefcase className="h-5 w-5" />
           </div>
           <div>
@@ -418,7 +418,7 @@ export function ApplicationForm() {
       {/* SECTION 3: PROFESSIONAL LINKS */}
       <div className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8 shadow-[var(--shadow-sm)]">
         <div className="flex items-center gap-3 border-b border-[var(--line)] pb-4 mb-6">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-100 text-[var(--primary)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
             <Link2 className="h-5 w-5" />
           </div>
           <div>
@@ -502,7 +502,7 @@ export function ApplicationForm() {
       {/* SECTION 4: QUESTIONNAIRE */}
       <div className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8 shadow-[var(--shadow-sm)]">
         <div className="flex items-center gap-3 border-b border-[var(--line)] pb-4 mb-6">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-100 text-[var(--primary)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
             <HelpCircle className="h-5 w-5" />
           </div>
           <div>
@@ -565,7 +565,7 @@ export function ApplicationForm() {
       {/* SECTION 5: FILE UPLOADS */}
       <div className="rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8 shadow-[var(--shadow-sm)]">
         <div className="flex items-center gap-3 border-b border-[var(--line)] pb-4 mb-6">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-100 text-[var(--primary)]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
             <UploadCloud className="h-5 w-5" />
           </div>
           <div>
@@ -604,7 +604,7 @@ export function ApplicationForm() {
               ) : (
                 <div className="flex items-center justify-between p-4 border border-[var(--line)] bg-[var(--bg-elevated)] rounded-2xl shadow-sm">
                   <div className="flex items-center gap-3 overflow-hidden">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-[var(--primary)]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
                       <FileCheck className="h-5 w-5" />
                     </div>
                     <div className="overflow-hidden">
@@ -658,7 +658,7 @@ export function ApplicationForm() {
               ) : (
                 <div className="flex items-center justify-between p-4 border border-[var(--line)] bg-[var(--bg-elevated)] rounded-2xl shadow-sm">
                   <div className="flex items-center gap-3 overflow-hidden">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-[var(--primary)]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
                       <FileText className="h-5 w-5" />
                     </div>
                     <div className="overflow-hidden">

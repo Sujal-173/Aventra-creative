@@ -24,9 +24,7 @@ export function StickyContactCta() {
       rel="noreferrer"
       aria-label="Chat with us on WhatsApp"
       className="fixed bottom-6 right-6 z-[65] flex h-14 w-14 items-center justify-center rounded-full text-white shadow-[var(--shadow-lg)] transition-transform hover:scale-105 focus-visible:scale-105"
-      style={{
-        background: "linear-gradient(135deg, var(--primary-glow), var(--primary))",
-      }}
+      style={{ background: "#22c55e" }}
     >
       <MessageCircle className="h-6 w-6" />
     </a>

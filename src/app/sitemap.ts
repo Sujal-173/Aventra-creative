@@ -4,7 +4,7 @@ import {PROJECTS} from '@/lib/data/projects'
 import {SERVICES} from '@/lib/data/services'
 import {fetchPosts, fetchProjects, fetchServices} from '@/lib/sanity/queries'
 
-const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aventracreative.com'
+const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aventracreative.in'
 
 // CMS entries appear in search engines within an hour while still working before content is imported.
 export const revalidate = 3600

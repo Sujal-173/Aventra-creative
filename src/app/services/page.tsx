@@ -50,7 +50,7 @@ export default async function ServicesPage() {
                 <Link
                   key={s.slug}
                   href={`/services/${s.slug}`}
-                  className="card group flex flex-col p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/30 hover:shadow-[0_12px_30px_rgba(67,56,202,0.08)]"
+                  className="card group flex flex-col p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/30 hover:shadow-[var(--shadow-md)]"
                 >
                   <div className="flex items-start justify-between">
                     <div

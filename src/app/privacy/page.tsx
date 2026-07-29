@@ -200,10 +200,10 @@ export default function PrivacyPage() {
               If you have any questions regarding this Privacy Policy or how we
               process your information, please contact us at{" "}
               <a
-                href="mailto:hello@aventracreative.com"
+                href="mailto:hello@aventracreative.in"
                 className="font-medium text-[var(--primary-glow)] hover:underline"
               >
-                hello@aventracreative.com
+                hello@aventracreative.in
               </a>
               .
             </p>

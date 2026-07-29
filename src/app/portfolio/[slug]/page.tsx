@@ -52,19 +52,19 @@ export default async function CaseStudyPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://aventracreative.com",
+        item: "https://aventracreative.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Portfolio",
-        item: "https://aventracreative.com/portfolio",
+        item: "https://aventracreative.in/portfolio",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: project.name,
-        item: `https://aventracreative.com/portfolio/${project.slug}`,
+        item: `https://aventracreative.in/portfolio/${project.slug}`,
       },
     ],
   };
@@ -164,7 +164,7 @@ export default async function CaseStudyPage({
                       href={project.projectUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-[var(--primary)] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[var(--primary-deep)]"
+                      className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-ink)] shadow-sm hover:bg-[var(--accent-glow)]"
                     >
                       Visit project <ArrowRight className="h-4 w-4" />
                     </a>
@@ -205,7 +205,7 @@ export default async function CaseStudyPage({
                   href={project.projectUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[var(--primary)] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[var(--primary-deep)]"
+                  className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-ink)] shadow-sm hover:bg-[var(--accent-glow)]"
                 >
                   Visit project <ArrowRight className="h-4 w-4" />
                 </a>

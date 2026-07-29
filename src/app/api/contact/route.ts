@@ -50,8 +50,8 @@ export async function POST(req: NextRequest) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: process.env.RESEND_FROM_EMAIL ?? "Aventra Creative <hello@aventracreative.com>",
-      to: [process.env.CONTACT_EMAIL ?? process.env.ADMIN_EMAIL ?? "hello@aventracreative.com"],
+      from: process.env.RESEND_FROM_EMAIL ?? "Aventra Creative <hello@aventracreative.in>",
+      to: [process.env.CONTACT_EMAIL ?? process.env.ADMIN_EMAIL ?? "hello@aventracreative.in"],
       reply_to: email,
       subject: `New contact request from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nService: ${service ?? "Not specified"}\n\nMessage:\n${message}`,

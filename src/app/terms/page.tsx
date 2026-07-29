@@ -194,9 +194,9 @@ export default function TermsPage() {
               please contact us through our Contact page or email us at{" "}
               <a
                 className="font-medium text-[var(--primary-glow)] hover:underline"
-                href="mailto:hello@aventracreative.com"
+                href="mailto:hello@aventracreative.in"
               >
-                hello@aventracreative.com
+                hello@aventracreative.in
               </a>
               .
             </p>

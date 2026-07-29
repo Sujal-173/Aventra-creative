@@ -3,9 +3,10 @@ import Script from "next/script";
 // Self-hosted via @fontsource rather than next/font/google: zero third-party
 // requests at runtime (no fonts.googleapis.com round trip), which is what
 // actually protects the <2s LCP budget in the performance spec.
-import "@fontsource/space-grotesk/500.css";
-import "@fontsource/space-grotesk/600.css";
-import "@fontsource/space-grotesk/700.css";
+import "@fontsource/bricolage-grotesque/500.css";
+import "@fontsource/bricolage-grotesque/600.css";
+import "@fontsource/bricolage-grotesque/700.css";
+import "@fontsource/bricolage-grotesque/800.css";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
@@ -18,11 +19,10 @@ import { CookieConsent } from "@/components/marketing/cookie-consent";
 import { StickyContactCta } from "@/components/marketing/sticky-contact-cta";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://aventracreative.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://aventracreative.in";
 const twitterHandle =
   process.env.NEXT_PUBLIC_TWITTER_HANDLE ?? "@aventracreative";
-const GA_ID =
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-M04NKFN0RH";
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-M04NKFN0RH";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -67,7 +67,47 @@ export const metadata: Metadata = {
       "Modern websites, SEO strategy, and digital experiences that turn visitors into customers.",
     images: ["/images/og-image.jpg"],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  category: "technology",
+  other: {
+    "geo.region": "IN-MP",
+    "geo.placename": "Indore",
+    "geo.position": "22.7196;75.8577",
+    ICBM: "22.7196, 75.8577",
+  },
+};
+
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#060607" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f5f2" },
+  ],
+};
+
+// AEO (Answer Engine Optimization): a WebPage node with a `speakable`
+// spec tells voice assistants and AI answer engines which selectors
+// hold the direct, citable answer content on the homepage.
+const speakableJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/#webpage`,
+  url: siteUrl,
+  name: "Aventra Creative — We Build Digital Experiences",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["h1", "[data-speakable='summary']"],
+  },
+  isPartOf: { "@id": `${siteUrl}/#website` },
 };
 
 const organizationJsonLd = [
@@ -138,23 +178,34 @@ const organizationJsonLd = [
       "query-input": "required name=search_term",
     },
   },
+  speakableJsonLd,
 ];
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="h-full">
-<head>
-  {GA_ID && (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
-      />
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Prevents a flash of the wrong theme: reads saved preference before paint. */}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`
+      try {
+        var t = localStorage.getItem('aventra-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.classList.toggle('dark', t === 'dark');
+      } catch (e) {}
+    `}
+        </Script>
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
 
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
@@ -163,19 +214,19 @@ export default function RootLayout({
             page_path: window.location.pathname,
           });
         `}
-      </Script>
-    </>
-  )}
+            </Script>
+          </>
+        )}
 
-  <Script
-    id="organization-jsonld"
-    type="application/ld+json"
-    strategy="beforeInteractive"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify(organizationJsonLd),
-    }}
-  />
-</head>
+        <Script
+          id="organization-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+      </head>
 
       <body
         id="top"
@@ -183,10 +234,16 @@ export default function RootLayout({
       >
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-[var(--primary)] focus:text-white focus:px-4 focus:py-2 focus:rounded-full"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-[var(--accent)] focus:text-[var(--accent-ink)] focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold"
         >
           Skip to content
         </a>
+        <Script
+          id="speakable-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }}
+        />
 
         <Navbar />
 

@@ -63,19 +63,19 @@ export default async function ServiceDetailPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://aventracreative.com",
+        item: "https://aventracreative.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: "https://aventracreative.com/services",
+        item: "https://aventracreative.in/services",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: service.name,
-        item: `https://aventracreative.com/services/${service.slug}`,
+        item: `https://aventracreative.in/services/${service.slug}`,
       },
     ],
   };

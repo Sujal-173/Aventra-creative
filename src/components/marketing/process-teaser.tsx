@@ -37,7 +37,10 @@ export function ProcessTeaser() {
           </Link>
         </div>
 
-        <div className="relative rounded-[1.6rem] border border-[var(--line)] bg-[var(--bg-elevated)]/90 p-2 shadow-[var(--shadow-md)]">
+        <div
+          className="relative rounded-[1.6rem] border border-[var(--line)] p-2 shadow-[var(--shadow-md)]"
+          style={{ backgroundColor: "var(--bg-elevated)" }}
+        >
           <div className="rounded-[1.25rem] bg-[var(--bg-dark)] p-6">
             <div className="label-mono flex items-center justify-between text-[var(--ink-faint)]">
               <span>aventra — process.log</span>
