@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 // Self-hosted via @fontsource rather than next/font/google: zero third-party
 // requests at runtime (no fonts.googleapis.com round trip), which is what
 // actually protects the <2s LCP budget in the performance spec.
@@ -255,6 +256,7 @@ export default function RootLayout({
         <Footer />
         <StickyContactCta />
         <CookieConsent />
+        <SpeedInsights />
       </body>
     </html>
   );
