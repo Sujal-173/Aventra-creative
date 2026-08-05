@@ -22,6 +22,7 @@ const NAV_LINKS = [
   { name: "Process", href: "/process" },
   { name: "Pricing", href: "/pricing" },
   { name: "Careers", href: "/careers" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
   { name: "About", href: "/about" },
 ];
