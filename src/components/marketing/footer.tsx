@@ -24,6 +24,7 @@ const COLUMNS = [
       { name: "Process", href: "/process" },
       { name: "Careers", href: "/careers" },
       { name: "Portfolio", href: "/portfolio" },
+      { name: "Blog", href: "/blog" },
       { name: "Contact", href: "/contact" },
     ],
   },
